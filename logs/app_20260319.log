@@ -1,0 +1,1117 @@
+2026-03-19 15:54:41.680 | INFO     | minio_utils.py      :<module>       :29   - MinIO存储桶[knowledge-base-files]已存在，无需重复创建
+2026-03-19 15:54:41.817 | INFO     | minio_utils.py      :<module>       :42   - MinIO存储桶[knowledge-base-files]已配置公网只读策略，支持匿名URL访问
+2026-03-19 15:54:50.924 | INFO     | file_import_service.py:<module>       :234  - File Import Service 服务启动中...
+2026-03-19 15:56:49.083 | INFO     | node_item_name_confirm.py:node_item_name_confirm:314  - >>> node_item_name_confirm: 开始处理
+2026-03-19 15:56:49.276 | INFO     | node_item_name_confirm.py:node_item_name_confirm:325  - Node: 获取到 0 条历史消息
+2026-03-19 15:56:49.296 | INFO     | node_item_name_confirm.py:step_3_extract_info:29   - Step 3: 开始提取信息 (LLM)
+2026-03-19 15:56:49.302 | INFO     | lm_utils.py         :get_llm_client :44   - [LLM客户端] 开始初始化新实例：模型=qwen-flash，JSON模式=True
+2026-03-19 15:56:50.250 | INFO     | lm_utils.py         :get_llm_client :71   - [LLM客户端] 实例初始化成功并缓存：模型=qwen-flash，JSON模式=True
+2026-03-19 15:56:50.253 | INFO     | node_item_name_confirm.py:step_3_extract_info:39   - Step 3: 历史上下文构建完成，长度: 0 字符
+2026-03-19 15:56:50.258 | INFO     | node_item_name_confirm.py:step_3_extract_info:56   - Step 3: 正在调用 LLM 进行提取...
+2026-03-19 15:56:51.153 | INFO     | node_item_name_confirm.py:step_3_extract_info:73   - Step 3: 提取结果解析成功 - 商品名: ['HAK180烫金机'], 重写问题: 关于HAK180烫金机，如果您长时间不会使用本设备，请从电源插座中拔掉电源线以确保安全。本设备必须安装在可轻松使...
+2026-03-19 15:56:51.157 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:85   - Step 4: 开始向量化检索，目标商品: ['HAK180烫金机']
+2026-03-19 15:56:51.204 | INFO     | milvus_utils.py     :get_milvus_client:27   - Milvus客户端连接成功
+2026-03-19 15:56:51.208 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:99   - Step 4: 正在生成 Embedding (Dense + Sparse)...
+2026-03-19 15:56:51.211 | INFO     | embedding_utils.py  :generate_embeddings:63   - 开始为1条文本生成混合向量嵌入
+2026-03-19 15:56:51.216 | INFO     | embedding_utils.py  :get_bge_m3_ef  :26   - 开始初始化BGE-M3模型
+2026-03-19 15:56:53.921 | SUCCESS  | embedding_utils.py  :get_bge_m3_ef  :44   - BGE-M3模型初始化成功，已开启原生L2归一化
+2026-03-19 15:56:54.408 | SUCCESS  | embedding_utils.py  :generate_embeddings:91   - 1条文本向量生成完成，格式已适配工业级使用
+2026-03-19 15:56:54.412 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:101  - Step 4: 向量生成完成，开始 Milvus 搜索 (Collection: kb_item_names)
+2026-03-19 15:56:55.130 | ERROR    | milvus_utils.py     :hybrid_search  :195  - Milvus混合搜索执行失败，集合[kb_item_names]：<MilvusException: (code=65535, message=fail to search on QueryNode 7: worker(7) query failed: metric type not match: invalid parameter[expected=IP][actual=COSINE])>
+2026-03-19 15:56:55.133 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:145  - Step 4: 商品 'HAK180烫金机' 检索完成，找到 0 个匹配项
+2026-03-19 15:56:55.136 | INFO     | node_item_name_confirm.py:step_5_align_item_names:161  - Step 5: 开始对齐商品名 (Score Analysis)
+2026-03-19 15:56:55.138 | INFO     | node_item_name_confirm.py:step_5_align_item_names:171  - Step 5: 'HAK180烫金机' 无匹配结果
+2026-03-19 15:56:55.141 | INFO     | node_item_name_confirm.py:step_5_align_item_names:224  - Step 5: 对齐结果: {'confirmed_item_names': [], 'options': []}
+2026-03-19 15:56:55.144 | INFO     | node_item_name_confirm.py:step_6_check_confirmation:232  - Step 6: 检查确认状态并更新 State
+2026-03-19 15:56:55.147 | INFO     | node_item_name_confirm.py:step_6_check_confirmation:273  - Step 6: [分支C] 无确认也无候选
+2026-03-19 15:56:55.150 | INFO     | node_item_name_confirm.py:step_7_write_history:283  - Step 7: 写入会话历史
+2026-03-19 15:56:55.153 | INFO     | node_item_name_confirm.py:step_7_write_history:287  - Step 7: 保存助手回答
+2026-03-19 15:56:55.165 | INFO     | node_item_name_confirm.py:step_7_write_history:297  - Step 7: 更新用户消息 (ID: 69bbac4180273825beaff0c5)
+2026-03-19 15:56:55.212 | INFO     | node_item_name_confirm.py:node_item_name_confirm:360  - Node: 处理结束, Final State Item Names: []
+2026-03-19 15:56:55.216 | INFO     | node_answer_output.py:node_answer_output:301  - ---node_answer_output (答案生成) 节点开始处理---
+2026-03-19 15:56:55.219 | INFO     | node_answer_output.py:step_1_check_answer:24   - ---Step 1: 发现已有答案，执行流式推送---
+2026-03-19 15:56:55.222 | INFO     | node_answer_output.py:node_answer_output:320  - ---写入MongoDB历史记录---
+2026-03-19 15:56:55.236 | INFO     | node_answer_output.py:node_answer_output:326  - ---发送 final 事件---图片为：[]
+2026-03-19 15:56:55.238 | INFO     | node_answer_output.py:node_answer_output:338  - ---node_answer_output 节点处理结束---
+2026-03-19 15:57:39.200 | INFO     | node_item_name_confirm.py:node_item_name_confirm:314  - >>> node_item_name_confirm: 开始处理
+2026-03-19 15:57:39.220 | INFO     | node_item_name_confirm.py:node_item_name_confirm:325  - Node: 获取到 3 条历史消息
+2026-03-19 15:57:39.233 | INFO     | node_item_name_confirm.py:step_3_extract_info:29   - Step 3: 开始提取信息 (LLM)
+2026-03-19 15:57:39.237 | INFO     | node_item_name_confirm.py:step_3_extract_info:39   - Step 3: 历史上下文构建完成，长度: 146 字符
+2026-03-19 15:57:39.242 | INFO     | node_item_name_confirm.py:step_3_extract_info:56   - Step 3: 正在调用 LLM 进行提取...
+2026-03-19 15:57:39.877 | INFO     | node_item_name_confirm.py:step_3_extract_info:73   - Step 3: 提取结果解析成功 - 商品名: ['HAK180烫金机'], 重写问题: HAK180烫金机这个东西怎么用？
+2026-03-19 15:57:39.881 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:85   - Step 4: 开始向量化检索，目标商品: ['HAK180烫金机']
+2026-03-19 15:57:39.885 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:99   - Step 4: 正在生成 Embedding (Dense + Sparse)...
+2026-03-19 15:57:39.888 | INFO     | embedding_utils.py  :generate_embeddings:63   - 开始为1条文本生成混合向量嵌入
+2026-03-19 15:57:40.127 | SUCCESS  | embedding_utils.py  :generate_embeddings:91   - 1条文本向量生成完成，格式已适配工业级使用
+2026-03-19 15:57:40.130 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:101  - Step 4: 向量生成完成，开始 Milvus 搜索 (Collection: kb_item_names)
+2026-03-19 15:57:40.749 | ERROR    | milvus_utils.py     :hybrid_search  :195  - Milvus混合搜索执行失败，集合[kb_item_names]：<MilvusException: (code=65535, message=fail to search on QueryNode 7: worker(7) query failed: metric type not match: invalid parameter[expected=IP][actual=COSINE])>
+2026-03-19 15:57:40.753 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:145  - Step 4: 商品 'HAK180烫金机' 检索完成，找到 0 个匹配项
+2026-03-19 15:57:40.757 | INFO     | node_item_name_confirm.py:step_5_align_item_names:161  - Step 5: 开始对齐商品名 (Score Analysis)
+2026-03-19 15:57:40.761 | INFO     | node_item_name_confirm.py:step_5_align_item_names:171  - Step 5: 'HAK180烫金机' 无匹配结果
+2026-03-19 15:57:40.764 | INFO     | node_item_name_confirm.py:step_5_align_item_names:224  - Step 5: 对齐结果: {'confirmed_item_names': [], 'options': []}
+2026-03-19 15:57:40.768 | INFO     | node_item_name_confirm.py:step_6_check_confirmation:232  - Step 6: 检查确认状态并更新 State
+2026-03-19 15:57:40.771 | INFO     | node_item_name_confirm.py:step_6_check_confirmation:273  - Step 6: [分支C] 无确认也无候选
+2026-03-19 15:57:40.775 | INFO     | node_item_name_confirm.py:step_7_write_history:283  - Step 7: 写入会话历史
+2026-03-19 15:57:40.779 | INFO     | node_item_name_confirm.py:step_7_write_history:287  - Step 7: 保存助手回答
+2026-03-19 15:57:40.792 | INFO     | node_item_name_confirm.py:step_7_write_history:297  - Step 7: 更新用户消息 (ID: 69bbac7380273825beaff0c8)
+2026-03-19 15:57:40.804 | INFO     | node_item_name_confirm.py:node_item_name_confirm:360  - Node: 处理结束, Final State Item Names: []
+2026-03-19 15:57:40.808 | INFO     | node_answer_output.py:node_answer_output:301  - ---node_answer_output (答案生成) 节点开始处理---
+2026-03-19 15:57:40.811 | INFO     | node_answer_output.py:step_1_check_answer:24   - ---Step 1: 发现已有答案，执行流式推送---
+2026-03-19 15:57:40.816 | INFO     | node_answer_output.py:node_answer_output:320  - ---写入MongoDB历史记录---
+2026-03-19 15:57:40.829 | INFO     | node_answer_output.py:node_answer_output:326  - ---发送 final 事件---图片为：[]
+2026-03-19 15:57:40.832 | INFO     | node_answer_output.py:node_answer_output:338  - ---node_answer_output 节点处理结束---
+2026-03-19 15:59:16.946 | INFO     | node_item_name_confirm.py:node_item_name_confirm:314  - >>> node_item_name_confirm: 开始处理
+2026-03-19 15:59:16.965 | INFO     | node_item_name_confirm.py:node_item_name_confirm:325  - Node: 获取到 6 条历史消息
+2026-03-19 15:59:16.976 | INFO     | node_item_name_confirm.py:step_3_extract_info:29   - Step 3: 开始提取信息 (LLM)
+2026-03-19 15:59:16.978 | INFO     | node_item_name_confirm.py:step_3_extract_info:39   - Step 3: 历史上下文构建完成，长度: 246 字符
+2026-03-19 15:59:16.984 | INFO     | node_item_name_confirm.py:step_3_extract_info:56   - Step 3: 正在调用 LLM 进行提取...
+2026-03-19 15:59:17.788 | INFO     | node_item_name_confirm.py:step_3_extract_info:73   - Step 3: 提取结果解析成功 - 商品名: ['HL-3040CN', 'HL-3070CW'], 重写问题: HL-3040CN和HL-3070CW网络打印服务器怎么使用？
+2026-03-19 15:59:17.791 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:85   - Step 4: 开始向量化检索，目标商品: ['HL-3040CN', 'HL-3070CW']
+2026-03-19 15:59:17.795 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:99   - Step 4: 正在生成 Embedding (Dense + Sparse)...
+2026-03-19 15:59:17.799 | INFO     | embedding_utils.py  :generate_embeddings:63   - 开始为2条文本生成混合向量嵌入
+2026-03-19 15:59:18.060 | SUCCESS  | embedding_utils.py  :generate_embeddings:91   - 2条文本向量生成完成，格式已适配工业级使用
+2026-03-19 15:59:18.066 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:101  - Step 4: 向量生成完成，开始 Milvus 搜索 (Collection: kb_item_names)
+2026-03-19 15:59:18.687 | ERROR    | milvus_utils.py     :hybrid_search  :195  - Milvus混合搜索执行失败，集合[kb_item_names]：<MilvusException: (code=65535, message=fail to search on QueryNode 7: worker(7) query failed: metric type not match: invalid parameter[expected=IP][actual=COSINE])>
+2026-03-19 15:59:18.690 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:145  - Step 4: 商品 'HL-3040CN' 检索完成，找到 0 个匹配项
+2026-03-19 15:59:19.310 | ERROR    | milvus_utils.py     :hybrid_search  :195  - Milvus混合搜索执行失败，集合[kb_item_names]：<MilvusException: (code=65535, message=fail to search on QueryNode 7: worker(7) query failed: metric type not match: invalid parameter[expected=IP][actual=COSINE])>
+2026-03-19 15:59:19.314 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:145  - Step 4: 商品 'HL-3070CW' 检索完成，找到 0 个匹配项
+2026-03-19 15:59:19.318 | INFO     | node_item_name_confirm.py:step_5_align_item_names:161  - Step 5: 开始对齐商品名 (Score Analysis)
+2026-03-19 15:59:19.323 | INFO     | node_item_name_confirm.py:step_5_align_item_names:171  - Step 5: 'HL-3040CN' 无匹配结果
+2026-03-19 15:59:19.327 | INFO     | node_item_name_confirm.py:step_5_align_item_names:171  - Step 5: 'HL-3070CW' 无匹配结果
+2026-03-19 15:59:19.330 | INFO     | node_item_name_confirm.py:step_5_align_item_names:224  - Step 5: 对齐结果: {'confirmed_item_names': [], 'options': []}
+2026-03-19 15:59:19.335 | INFO     | node_item_name_confirm.py:step_6_check_confirmation:232  - Step 6: 检查确认状态并更新 State
+2026-03-19 15:59:19.340 | INFO     | node_item_name_confirm.py:step_6_check_confirmation:273  - Step 6: [分支C] 无确认也无候选
+2026-03-19 15:59:19.342 | INFO     | node_item_name_confirm.py:step_7_write_history:283  - Step 7: 写入会话历史
+2026-03-19 15:59:19.347 | INFO     | node_item_name_confirm.py:step_7_write_history:287  - Step 7: 保存助手回答
+2026-03-19 15:59:19.360 | INFO     | node_item_name_confirm.py:step_7_write_history:297  - Step 7: 更新用户消息 (ID: 69bbacd480273825beaff0cb)
+2026-03-19 15:59:19.373 | INFO     | node_item_name_confirm.py:node_item_name_confirm:360  - Node: 处理结束, Final State Item Names: []
+2026-03-19 15:59:19.377 | INFO     | node_answer_output.py:node_answer_output:301  - ---node_answer_output (答案生成) 节点开始处理---
+2026-03-19 15:59:19.380 | INFO     | node_answer_output.py:step_1_check_answer:24   - ---Step 1: 发现已有答案，执行流式推送---
+2026-03-19 15:59:19.384 | INFO     | node_answer_output.py:node_answer_output:320  - ---写入MongoDB历史记录---
+2026-03-19 15:59:19.396 | INFO     | node_answer_output.py:node_answer_output:326  - ---发送 final 事件---图片为：[]
+2026-03-19 15:59:19.399 | INFO     | node_answer_output.py:node_answer_output:338  - ---node_answer_output 节点处理结束---
+2026-03-19 16:06:30.692 | INFO     | node_item_name_confirm.py:node_item_name_confirm:314  - >>> node_item_name_confirm: 开始处理
+2026-03-19 16:06:30.912 | INFO     | node_item_name_confirm.py:node_item_name_confirm:325  - Node: 获取到 0 条历史消息
+2026-03-19 16:06:30.928 | INFO     | node_item_name_confirm.py:step_3_extract_info:29   - Step 3: 开始提取信息 (LLM)
+2026-03-19 16:06:30.931 | INFO     | lm_utils.py         :get_llm_client :44   - [LLM客户端] 开始初始化新实例：模型=qwen-flash，JSON模式=True
+2026-03-19 16:06:31.885 | INFO     | lm_utils.py         :get_llm_client :71   - [LLM客户端] 实例初始化成功并缓存：模型=qwen-flash，JSON模式=True
+2026-03-19 16:06:31.891 | INFO     | node_item_name_confirm.py:step_3_extract_info:39   - Step 3: 历史上下文构建完成，长度: 0 字符
+2026-03-19 16:06:31.895 | INFO     | node_item_name_confirm.py:step_3_extract_info:56   - Step 3: 正在调用 LLM 进行提取...
+2026-03-19 16:06:32.863 | INFO     | node_item_name_confirm.py:step_3_extract_info:73   - Step 3: 提取结果解析成功 - 商品名: ['HAK180烫金机'], 重写问题: 关于HAK180烫金机，如果长时间不会使用本设备，请从电源插座中拔掉电源线以确保安全。本设备必须安装在可轻松使...
+2026-03-19 16:06:32.868 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:85   - Step 4: 开始向量化检索，目标商品: ['HAK180烫金机']
+2026-03-19 16:06:32.916 | INFO     | milvus_utils.py     :get_milvus_client:27   - Milvus客户端连接成功
+2026-03-19 16:06:32.920 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:99   - Step 4: 正在生成 Embedding (Dense + Sparse)...
+2026-03-19 16:06:32.924 | INFO     | embedding_utils.py  :generate_embeddings:63   - 开始为1条文本生成混合向量嵌入
+2026-03-19 16:06:32.928 | INFO     | embedding_utils.py  :get_bge_m3_ef  :26   - 开始初始化BGE-M3模型
+2026-03-19 16:06:34.999 | SUCCESS  | embedding_utils.py  :get_bge_m3_ef  :44   - BGE-M3模型初始化成功，已开启原生L2归一化
+2026-03-19 16:06:35.521 | SUCCESS  | embedding_utils.py  :generate_embeddings:91   - 1条文本向量生成完成，格式已适配工业级使用
+2026-03-19 16:06:35.526 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:101  - Step 4: 向量生成完成，开始 Milvus 搜索 (Collection: kb_item_names)
+2026-03-19 16:06:35.686 | INFO     | milvus_utils.py     :hybrid_search  :192  - Milvus混合搜索完成，集合[kb_item_names]共检索到3条结果
+2026-03-19 16:06:35.690 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:145  - Step 4: 商品 'HAK180烫金机' 检索完成，找到 3 个匹配项
+2026-03-19 16:06:35.694 | INFO     | node_item_name_confirm.py:step_5_align_item_names:161  - Step 5: 开始对齐商品名 (Score Analysis)
+2026-03-19 16:06:35.699 | INFO     | node_item_name_confirm.py:step_5_align_item_names:179  - Step 5: 'HAK180烫金机' Top匹配: HAK180烫金机(0.728), HL-3040CNHL-3070CW网络打印服务器(0.614), 华为Mate60Pro智能手机(0.590)
+2026-03-19 16:06:35.703 | INFO     | node_item_name_confirm.py:step_5_align_item_names:215  - Step 5: 规则C命中 (Mid Confidence) -> 添加候选: ['HAK180烫金机', 'HL-3040CNHL-3070CW网络打印服务器']
+2026-03-19 16:06:35.707 | INFO     | node_item_name_confirm.py:step_5_align_item_names:224  - Step 5: 对齐结果: {'confirmed_item_names': [], 'options': ['HAK180烫金机', 'HL-3040CNHL-3070CW网络打印服务器']}
+2026-03-19 16:06:35.712 | INFO     | node_item_name_confirm.py:step_6_check_confirmation:232  - Step 6: 检查确认状态并更新 State
+2026-03-19 16:06:35.717 | INFO     | node_item_name_confirm.py:step_6_check_confirmation:265  - Step 6: [分支B] 存在候选商品名: ['HAK180烫金机', 'HL-3040CNHL-3070CW网络打印服务器']
+2026-03-19 16:06:35.723 | INFO     | node_item_name_confirm.py:step_7_write_history:283  - Step 7: 写入会话历史
+2026-03-19 16:06:35.726 | INFO     | node_item_name_confirm.py:step_7_write_history:287  - Step 7: 保存助手回答
+2026-03-19 16:06:35.741 | INFO     | node_item_name_confirm.py:step_7_write_history:297  - Step 7: 更新用户消息 (ID: 69bbae86e5f9aee544d67cff)
+2026-03-19 16:06:35.758 | INFO     | node_item_name_confirm.py:node_item_name_confirm:360  - Node: 处理结束, Final State Item Names: []
+2026-03-19 16:06:35.763 | INFO     | node_answer_output.py:node_answer_output:301  - ---node_answer_output (答案生成) 节点开始处理---
+2026-03-19 16:06:35.768 | INFO     | node_answer_output.py:step_1_check_answer:24   - ---Step 1: 发现已有答案，执行流式推送---
+2026-03-19 16:06:35.775 | INFO     | node_answer_output.py:node_answer_output:320  - ---写入MongoDB历史记录---
+2026-03-19 16:06:35.789 | INFO     | node_answer_output.py:node_answer_output:326  - ---发送 final 事件---图片为：[]
+2026-03-19 16:06:35.795 | INFO     | node_answer_output.py:node_answer_output:338  - ---node_answer_output 节点处理结束---
+2026-03-19 16:07:01.098 | INFO     | node_item_name_confirm.py:node_item_name_confirm:314  - >>> node_item_name_confirm: 开始处理
+2026-03-19 16:07:01.114 | INFO     | node_item_name_confirm.py:node_item_name_confirm:325  - Node: 获取到 3 条历史消息
+2026-03-19 16:07:01.128 | INFO     | node_item_name_confirm.py:step_3_extract_info:29   - Step 3: 开始提取信息 (LLM)
+2026-03-19 16:07:01.133 | INFO     | node_item_name_confirm.py:step_3_extract_info:39   - Step 3: 历史上下文构建完成，长度: 204 字符
+2026-03-19 16:07:01.138 | INFO     | node_item_name_confirm.py:step_3_extract_info:56   - Step 3: 正在调用 LLM 进行提取...
+2026-03-19 16:07:02.081 | INFO     | node_item_name_confirm.py:step_3_extract_info:73   - Step 3: 提取结果解析成功 - 商品名: ['HAK180烫金机'], 重写问题: 关于HAK180烫金机，电源线使用注意事项是什么？
+2026-03-19 16:07:02.086 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:85   - Step 4: 开始向量化检索，目标商品: ['HAK180烫金机']
+2026-03-19 16:07:02.089 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:99   - Step 4: 正在生成 Embedding (Dense + Sparse)...
+2026-03-19 16:07:02.094 | INFO     | embedding_utils.py  :generate_embeddings:63   - 开始为1条文本生成混合向量嵌入
+2026-03-19 16:07:02.366 | SUCCESS  | embedding_utils.py  :generate_embeddings:91   - 1条文本向量生成完成，格式已适配工业级使用
+2026-03-19 16:07:02.371 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:101  - Step 4: 向量生成完成，开始 Milvus 搜索 (Collection: kb_item_names)
+2026-03-19 16:07:02.388 | INFO     | milvus_utils.py     :hybrid_search  :192  - Milvus混合搜索完成，集合[kb_item_names]共检索到3条结果
+2026-03-19 16:07:02.393 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:145  - Step 4: 商品 'HAK180烫金机' 检索完成，找到 3 个匹配项
+2026-03-19 16:07:02.397 | INFO     | node_item_name_confirm.py:step_5_align_item_names:161  - Step 5: 开始对齐商品名 (Score Analysis)
+2026-03-19 16:07:02.402 | INFO     | node_item_name_confirm.py:step_5_align_item_names:179  - Step 5: 'HAK180烫金机' Top匹配: HAK180烫金机(0.728), HL-3040CNHL-3070CW网络打印服务器(0.614), 华为Mate60Pro智能手机(0.590)
+2026-03-19 16:07:02.404 | INFO     | node_item_name_confirm.py:step_5_align_item_names:215  - Step 5: 规则C命中 (Mid Confidence) -> 添加候选: ['HAK180烫金机', 'HL-3040CNHL-3070CW网络打印服务器']
+2026-03-19 16:07:02.409 | INFO     | node_item_name_confirm.py:step_5_align_item_names:224  - Step 5: 对齐结果: {'confirmed_item_names': [], 'options': ['HAK180烫金机', 'HL-3040CNHL-3070CW网络打印服务器']}
+2026-03-19 16:07:02.413 | INFO     | node_item_name_confirm.py:step_6_check_confirmation:232  - Step 6: 检查确认状态并更新 State
+2026-03-19 16:07:02.417 | INFO     | node_item_name_confirm.py:step_6_check_confirmation:265  - Step 6: [分支B] 存在候选商品名: ['HAK180烫金机', 'HL-3040CNHL-3070CW网络打印服务器']
+2026-03-19 16:07:02.421 | INFO     | node_item_name_confirm.py:step_7_write_history:283  - Step 7: 写入会话历史
+2026-03-19 16:07:02.425 | INFO     | node_item_name_confirm.py:step_7_write_history:287  - Step 7: 保存助手回答
+2026-03-19 16:07:02.439 | INFO     | node_item_name_confirm.py:step_7_write_history:297  - Step 7: 更新用户消息 (ID: 69bbaea5e5f9aee544d67d02)
+2026-03-19 16:07:02.454 | INFO     | node_item_name_confirm.py:node_item_name_confirm:360  - Node: 处理结束, Final State Item Names: []
+2026-03-19 16:07:02.459 | INFO     | node_answer_output.py:node_answer_output:301  - ---node_answer_output (答案生成) 节点开始处理---
+2026-03-19 16:07:02.463 | INFO     | node_answer_output.py:step_1_check_answer:24   - ---Step 1: 发现已有答案，执行流式推送---
+2026-03-19 16:07:02.469 | INFO     | node_answer_output.py:node_answer_output:320  - ---写入MongoDB历史记录---
+2026-03-19 16:07:02.483 | INFO     | node_answer_output.py:node_answer_output:326  - ---发送 final 事件---图片为：[]
+2026-03-19 16:07:02.487 | INFO     | node_answer_output.py:node_answer_output:338  - ---node_answer_output 节点处理结束---
+2026-03-19 16:10:54.037 | INFO     | node_item_name_confirm.py:node_item_name_confirm:314  - >>> node_item_name_confirm: 开始处理
+2026-03-19 16:10:54.254 | INFO     | node_item_name_confirm.py:node_item_name_confirm:325  - Node: 获取到 6 条历史消息
+2026-03-19 16:10:54.265 | INFO     | node_item_name_confirm.py:step_3_extract_info:29   - Step 3: 开始提取信息 (LLM)
+2026-03-19 16:10:54.270 | INFO     | lm_utils.py         :get_llm_client :44   - [LLM客户端] 开始初始化新实例：模型=qwen-flash，JSON模式=True
+2026-03-19 16:10:55.214 | INFO     | lm_utils.py         :get_llm_client :71   - [LLM客户端] 实例初始化成功并缓存：模型=qwen-flash，JSON模式=True
+2026-03-19 16:10:55.220 | INFO     | node_item_name_confirm.py:step_3_extract_info:39   - Step 3: 历史上下文构建完成，长度: 360 字符
+2026-03-19 16:10:55.225 | INFO     | node_item_name_confirm.py:step_3_extract_info:56   - Step 3: 正在调用 LLM 进行提取...
+2026-03-19 16:10:55.979 | INFO     | node_item_name_confirm.py:step_3_extract_info:73   - Step 3: 提取结果解析成功 - 商品名: ['HAK180烫金机'], 重写问题: HAK180烫金机的电源如何连接和使用？
+2026-03-19 16:10:55.984 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:85   - Step 4: 开始向量化检索，目标商品: ['HAK180烫金机']
+2026-03-19 16:10:56.025 | INFO     | milvus_utils.py     :get_milvus_client:27   - Milvus客户端连接成功
+2026-03-19 16:10:56.028 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:99   - Step 4: 正在生成 Embedding (Dense + Sparse)...
+2026-03-19 16:10:56.032 | INFO     | embedding_utils.py  :generate_embeddings:63   - 开始为1条文本生成混合向量嵌入
+2026-03-19 16:10:56.036 | INFO     | embedding_utils.py  :get_bge_m3_ef  :26   - 开始初始化BGE-M3模型
+2026-03-19 16:10:57.848 | SUCCESS  | embedding_utils.py  :get_bge_m3_ef  :44   - BGE-M3模型初始化成功，已开启原生L2归一化
+2026-03-19 16:10:58.264 | SUCCESS  | embedding_utils.py  :generate_embeddings:91   - 1条文本向量生成完成，格式已适配工业级使用
+2026-03-19 16:10:58.269 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:101  - Step 4: 向量生成完成，开始 Milvus 搜索 (Collection: kb_item_names)
+2026-03-19 16:10:58.288 | INFO     | milvus_utils.py     :hybrid_search  :192  - Milvus混合搜索完成，集合[kb_item_names]共检索到3条结果
+2026-03-19 16:10:58.293 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:145  - Step 4: 商品 'HAK180烫金机' 检索完成，找到 3 个匹配项
+2026-03-19 16:10:58.297 | INFO     | node_item_name_confirm.py:step_5_align_item_names:161  - Step 5: 开始对齐商品名 (Score Analysis)
+2026-03-19 16:10:58.300 | INFO     | node_item_name_confirm.py:step_5_align_item_names:179  - Step 5: 'HAK180烫金机' Top匹配: HAK180烫金机(0.728), HL-3040CNHL-3070CW网络打印服务器(0.614), 华为Mate60Pro智能手机(0.590)
+2026-03-19 16:10:58.305 | INFO     | node_item_name_confirm.py:step_5_align_item_names:215  - Step 5: 规则C命中 (Mid Confidence) -> 添加候选: ['HAK180烫金机', 'HL-3040CNHL-3070CW网络打印服务器']
+2026-03-19 16:10:58.308 | INFO     | node_item_name_confirm.py:step_5_align_item_names:224  - Step 5: 对齐结果: {'confirmed_item_names': [], 'options': ['HL-3040CNHL-3070CW网络打印服务器', 'HAK180烫金机']}
+2026-03-19 16:10:58.312 | INFO     | node_item_name_confirm.py:step_6_check_confirmation:232  - Step 6: 检查确认状态并更新 State
+2026-03-19 16:10:58.315 | INFO     | node_item_name_confirm.py:step_6_check_confirmation:265  - Step 6: [分支B] 存在候选商品名: ['HL-3040CNHL-3070CW网络打印服务器', 'HAK180烫金机']
+2026-03-19 16:10:58.319 | INFO     | node_item_name_confirm.py:step_7_write_history:283  - Step 7: 写入会话历史
+2026-03-19 16:10:58.323 | INFO     | node_item_name_confirm.py:step_7_write_history:287  - Step 7: 保存助手回答
+2026-03-19 16:10:58.335 | INFO     | node_item_name_confirm.py:step_7_write_history:297  - Step 7: 更新用户消息 (ID: 69bbaf8e0f9fa52a85151d55)
+2026-03-19 16:10:58.349 | INFO     | node_item_name_confirm.py:node_item_name_confirm:360  - Node: 处理结束, Final State Item Names: []
+2026-03-19 16:10:58.353 | INFO     | node_answer_output.py:node_answer_output:301  - ---node_answer_output (答案生成) 节点开始处理---
+2026-03-19 16:10:58.358 | INFO     | node_answer_output.py:step_1_check_answer:24   - ---Step 1: 发现已有答案，执行流式推送---
+2026-03-19 16:10:58.361 | INFO     | node_answer_output.py:node_answer_output:320  - ---写入MongoDB历史记录---
+2026-03-19 16:10:58.375 | INFO     | node_answer_output.py:node_answer_output:326  - ---发送 final 事件---图片为：[]
+2026-03-19 16:10:58.378 | INFO     | node_answer_output.py:node_answer_output:338  - ---node_answer_output 节点处理结束---
+2026-03-19 16:12:52.363 | INFO     | node_item_name_confirm.py:node_item_name_confirm:314  - >>> node_item_name_confirm: 开始处理
+2026-03-19 16:12:52.591 | INFO     | node_item_name_confirm.py:node_item_name_confirm:325  - Node: 获取到 9 条历史消息
+2026-03-19 16:12:52.605 | INFO     | node_item_name_confirm.py:step_3_extract_info:29   - Step 3: 开始提取信息 (LLM)
+2026-03-19 16:12:52.610 | INFO     | lm_utils.py         :get_llm_client :44   - [LLM客户端] 开始初始化新实例：模型=qwen-flash，JSON模式=True
+2026-03-19 16:12:53.695 | INFO     | lm_utils.py         :get_llm_client :71   - [LLM客户端] 实例初始化成功并缓存：模型=qwen-flash，JSON模式=True
+2026-03-19 16:12:53.700 | INFO     | node_item_name_confirm.py:step_3_extract_info:39   - Step 3: 历史上下文构建完成，长度: 521 字符
+2026-03-19 16:12:53.705 | INFO     | node_item_name_confirm.py:step_3_extract_info:56   - Step 3: 正在调用 LLM 进行提取...
+2026-03-19 16:12:54.547 | INFO     | node_item_name_confirm.py:step_3_extract_info:73   - Step 3: 提取结果解析成功 - 商品名: ['HAK180烫金机'], 重写问题: HAK180烫金机的电源如何连接和使用？
+2026-03-19 16:12:54.552 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:85   - Step 4: 开始向量化检索，目标商品: ['HAK180烫金机']
+2026-03-19 16:12:54.605 | INFO     | milvus_utils.py     :get_milvus_client:27   - Milvus客户端连接成功
+2026-03-19 16:12:54.610 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:99   - Step 4: 正在生成 Embedding (Dense + Sparse)...
+2026-03-19 16:12:54.615 | INFO     | embedding_utils.py  :generate_embeddings:63   - 开始为1条文本生成混合向量嵌入
+2026-03-19 16:12:54.617 | INFO     | embedding_utils.py  :get_bge_m3_ef  :26   - 开始初始化BGE-M3模型
+2026-03-19 16:12:56.481 | SUCCESS  | embedding_utils.py  :get_bge_m3_ef  :44   - BGE-M3模型初始化成功，已开启原生L2归一化
+2026-03-19 16:12:56.946 | SUCCESS  | embedding_utils.py  :generate_embeddings:91   - 1条文本向量生成完成，格式已适配工业级使用
+2026-03-19 16:12:56.951 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:101  - Step 4: 向量生成完成，开始 Milvus 搜索 (Collection: kb_item_names)
+2026-03-19 16:12:56.972 | INFO     | milvus_utils.py     :hybrid_search  :192  - Milvus混合搜索完成，集合[kb_item_names]共检索到3条结果
+2026-03-19 16:12:56.977 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:145  - Step 4: 商品 'HAK180烫金机' 检索完成，找到 3 个匹配项
+2026-03-19 16:12:56.980 | INFO     | node_item_name_confirm.py:step_5_align_item_names:161  - Step 5: 开始对齐商品名 (Score Analysis)
+2026-03-19 16:12:56.984 | INFO     | node_item_name_confirm.py:step_5_align_item_names:179  - Step 5: 'HAK180烫金机' Top匹配: HAK180烫金机(0.728), HL-3040CNHL-3070CW网络打印服务器(0.614), 华为Mate60Pro智能手机(0.590)
+2026-03-19 16:12:56.988 | INFO     | node_item_name_confirm.py:step_5_align_item_names:215  - Step 5: 规则C命中 (Mid Confidence) -> 添加候选: ['HAK180烫金机', 'HL-3040CNHL-3070CW网络打印服务器']
+2026-03-19 16:12:56.991 | INFO     | node_item_name_confirm.py:step_5_align_item_names:224  - Step 5: 对齐结果: {'confirmed_item_names': [], 'options': ['HAK180烫金机', 'HL-3040CNHL-3070CW网络打印服务器']}
+2026-03-19 16:12:56.995 | INFO     | node_item_name_confirm.py:step_6_check_confirmation:232  - Step 6: 检查确认状态并更新 State
+2026-03-19 16:12:56.998 | INFO     | node_item_name_confirm.py:step_6_check_confirmation:265  - Step 6: [分支B] 存在候选商品名: ['HAK180烫金机', 'HL-3040CNHL-3070CW网络打印服务器']
+2026-03-19 16:12:57.002 | INFO     | node_item_name_confirm.py:step_7_write_history:283  - Step 7: 写入会话历史
+2026-03-19 16:12:57.006 | INFO     | node_item_name_confirm.py:step_7_write_history:287  - Step 7: 保存助手回答
+2026-03-19 16:12:57.023 | INFO     | node_item_name_confirm.py:step_7_write_history:297  - Step 7: 更新用户消息 (ID: 69bbb004a7cbe6f3c624aab3)
+2026-03-19 16:12:57.039 | INFO     | node_item_name_confirm.py:node_item_name_confirm:360  - Node: 处理结束, Final State Item Names: []
+2026-03-19 16:12:57.044 | INFO     | node_answer_output.py:node_answer_output:301  - ---node_answer_output (答案生成) 节点开始处理---
+2026-03-19 16:12:57.048 | INFO     | node_answer_output.py:step_1_check_answer:24   - ---Step 1: 发现已有答案，执行流式推送---
+2026-03-19 16:12:57.051 | INFO     | node_answer_output.py:node_answer_output:320  - ---写入MongoDB历史记录---
+2026-03-19 16:12:57.066 | INFO     | node_answer_output.py:node_answer_output:326  - ---发送 final 事件---图片为：[]
+2026-03-19 16:12:57.070 | INFO     | node_answer_output.py:node_answer_output:338  - ---node_answer_output 节点处理结束---
+2026-03-19 16:18:01.190 | INFO     | node_item_name_confirm.py:node_item_name_confirm:314  - >>> node_item_name_confirm: 开始处理
+2026-03-19 16:18:01.403 | INFO     | node_item_name_confirm.py:node_item_name_confirm:325  - Node: 获取到 10 条历史消息
+2026-03-19 16:18:01.417 | INFO     | node_item_name_confirm.py:step_3_extract_info:29   - Step 3: 开始提取信息 (LLM)
+2026-03-19 16:18:01.420 | INFO     | lm_utils.py         :get_llm_client :44   - [LLM客户端] 开始初始化新实例：模型=qwen-flash，JSON模式=True
+2026-03-19 16:18:02.372 | INFO     | lm_utils.py         :get_llm_client :71   - [LLM客户端] 实例初始化成功并缓存：模型=qwen-flash，JSON模式=True
+2026-03-19 16:18:02.377 | INFO     | node_item_name_confirm.py:step_3_extract_info:39   - Step 3: 历史上下文构建完成，长度: 588 字符
+2026-03-19 16:18:02.381 | INFO     | node_item_name_confirm.py:step_3_extract_info:56   - Step 3: 正在调用 LLM 进行提取...
+2026-03-19 16:18:03.284 | INFO     | node_item_name_confirm.py:step_3_extract_info:73   - Step 3: 提取结果解析成功 - 商品名: ['HAK180烫金机'], 重写问题: HAK180烫金机的电源如何连接和使用？
+2026-03-19 16:18:03.288 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:85   - Step 4: 开始向量化检索，目标商品: ['HAK180烫金机']
+2026-03-19 16:18:03.344 | INFO     | milvus_utils.py     :get_milvus_client:27   - Milvus客户端连接成功
+2026-03-19 16:18:03.349 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:99   - Step 4: 正在生成 Embedding (Dense + Sparse)...
+2026-03-19 16:18:03.352 | INFO     | embedding_utils.py  :generate_embeddings:63   - 开始为1条文本生成混合向量嵌入
+2026-03-19 16:18:03.355 | INFO     | embedding_utils.py  :get_bge_m3_ef  :26   - 开始初始化BGE-M3模型
+2026-03-19 16:18:04.906 | SUCCESS  | embedding_utils.py  :get_bge_m3_ef  :44   - BGE-M3模型初始化成功，已开启原生L2归一化
+2026-03-19 16:18:05.315 | SUCCESS  | embedding_utils.py  :generate_embeddings:91   - 1条文本向量生成完成，格式已适配工业级使用
+2026-03-19 16:18:05.319 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:101  - Step 4: 向量生成完成，开始 Milvus 搜索 (Collection: kb_item_names)
+2026-03-19 16:18:05.348 | INFO     | milvus_utils.py     :hybrid_search  :192  - Milvus混合搜索完成，集合[kb_item_names]共检索到3条结果
+2026-03-19 16:18:05.351 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:145  - Step 4: 商品 'HAK180烫金机' 检索完成，找到 3 个匹配项
+2026-03-19 16:18:05.355 | INFO     | node_item_name_confirm.py:step_5_align_item_names:161  - Step 5: 开始对齐商品名 (Score Analysis)
+2026-03-19 16:18:05.359 | INFO     | node_item_name_confirm.py:step_5_align_item_names:179  - Step 5: 'HAK180烫金机' Top匹配: HAK180烫金机(0.696), HL-3040CNHL-3070CW网络打印服务器(0.571), 华为Mate60Pro智能手机(0.556)
+2026-03-19 16:18:05.363 | INFO     | node_item_name_confirm.py:step_5_align_item_names:215  - Step 5: 规则C命中 (Mid Confidence) -> 添加候选: ['HAK180烫金机']
+2026-03-19 16:18:05.368 | INFO     | node_item_name_confirm.py:step_5_align_item_names:224  - Step 5: 对齐结果: {'confirmed_item_names': [], 'options': ['HAK180烫金机']}
+2026-03-19 16:18:05.372 | INFO     | node_item_name_confirm.py:step_6_check_confirmation:232  - Step 6: 检查确认状态并更新 State
+2026-03-19 16:18:05.377 | INFO     | node_item_name_confirm.py:step_6_check_confirmation:265  - Step 6: [分支B] 存在候选商品名: ['HAK180烫金机']
+2026-03-19 16:18:05.382 | INFO     | node_item_name_confirm.py:step_7_write_history:283  - Step 7: 写入会话历史
+2026-03-19 16:18:05.385 | INFO     | node_item_name_confirm.py:step_7_write_history:287  - Step 7: 保存助手回答
+2026-03-19 16:18:05.395 | INFO     | node_item_name_confirm.py:step_7_write_history:297  - Step 7: 更新用户消息 (ID: 69bbb139f3df75da1f0fb69f)
+2026-03-19 16:18:05.409 | INFO     | node_item_name_confirm.py:node_item_name_confirm:360  - Node: 处理结束, Final State Item Names: []
+2026-03-19 16:18:05.415 | INFO     | node_answer_output.py:node_answer_output:301  - ---node_answer_output (答案生成) 节点开始处理---
+2026-03-19 16:18:05.419 | INFO     | node_answer_output.py:step_1_check_answer:24   - ---Step 1: 发现已有答案，执行流式推送---
+2026-03-19 16:18:05.423 | INFO     | node_answer_output.py:node_answer_output:320  - ---写入MongoDB历史记录---
+2026-03-19 16:18:05.437 | INFO     | node_answer_output.py:node_answer_output:326  - ---发送 final 事件---图片为：[]
+2026-03-19 16:18:05.440 | INFO     | node_answer_output.py:node_answer_output:338  - ---node_answer_output 节点处理结束---
+2026-03-19 16:34:13.678 | INFO     | minio_utils.py      :<module>       :29   - MinIO存储桶[knowledge-base-files]已存在，无需重复创建
+2026-03-19 16:34:13.947 | INFO     | minio_utils.py      :<module>       :42   - MinIO存储桶[knowledge-base-files]已配置公网只读策略，支持匿名URL访问
+2026-03-19 16:34:22.943 | INFO     | file_import_service.py:<module>       :234  - File Import Service 服务启动中...
+2026-03-19 16:35:01.767 | INFO     | file_import_service.py:get_import_page:53   - 前端页面访问，文件绝对路径：C:\Users\admin\PycharmProjects\PythonProject16\app\import_process\page\import.html
+2026-03-19 16:35:13.386 | INFO     | file_import_service.py:upload_files   :140  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 开始处理上传文件，文件名：hl3040网络说明书.pdf，文件类型：application/pdf
+2026-03-19 16:35:13.396 | INFO     | file_import_service.py:upload_files   :154  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 文件已保存至本地，路径：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed\hl3040网络说明书.pdf
+2026-03-19 16:35:13.868 | INFO     | file_import_service.py:upload_files   :178  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 文件已成功上传至MinIO，桶名：knowledge-base-files，对象名：pdf_files/20260319/hl3040网络说明书.pdf
+2026-03-19 16:35:13.876 | INFO     | file_import_service.py:upload_files   :188  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 已将LangGraph全流程加入后台任务，任务已启动
+2026-03-19 16:35:13.883 | INFO     | file_import_service.py:upload_files   :191  - 多文件上传处理完毕，共处理1个文件，生成TaskID列表：['ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed']
+2026-03-19 16:35:13.891 | INFO     | file_import_service.py:run_graph_task :85   - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 开始执行LangGraph全流程，本地文件路径：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed\hl3040网络说明书.pdf
+2026-03-19 16:35:13.919 | INFO     | node_entry.py       :node_entry     :37   - 【node_entry】文件类型校验通过：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed\hl3040网络说明书.pdf → PDF格式，开启PDF解析流程
+2026-03-19 16:35:13.925 | INFO     | node_entry.py       :node_entry     :50   - 【node_entry】文件业务标识提取完成：file_title = hl3040网络说明书
+2026-03-19 16:35:13.930 | INFO     | file_import_service.py:run_graph_task :97   - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] LangGraph节点执行完成：node_entry
+2026-03-19 16:35:13.932 | INFO     | node_pdf_to_md.py   :step_2_upload_and_poll:68   - [配置校验] MinerU基础配置加载成功，开始处理文件：hl3040网络说明书.pdf
+2026-03-19 16:35:14.594 | INFO     | node_pdf_to_md.py   :step_2_upload_and_poll:96   - [获取上传链接] 成功，batch_id：6298a802-5476-4dde-be7b-1ec535833203，上传链接已生成
+2026-03-19 16:35:14.599 | INFO     | node_pdf_to_md.py   :step_2_upload_and_poll:99   - [文件上传] 开始读取PDF文件：hl3040网络说明书.pdf
+2026-03-19 16:35:15.498 | INFO     | node_pdf_to_md.py   :step_2_upload_and_poll:118  - [文件上传] 成功，文件hl3040网络说明书.pdf已存入云存储
+2026-03-19 16:35:15.501 | INFO     | node_pdf_to_md.py   :step_2_upload_and_poll:130  - [任务轮询] 开始监控任务状态，batch_id：6298a802-5476-4dde-be7b-1ec535833203，最大超时：600s
+2026-03-19 16:35:15.901 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件']
+2026-03-19 16:35:17.898 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件']
+2026-03-19 16:35:19.553 | INFO     | node_pdf_to_md.py   :step_2_upload_and_poll:171  - [任务轮询] 解析任务完成！总耗时：3s，batch_id：6298a802-5476-4dde-be7b-1ec535833203
+2026-03-19 16:35:19.554 | INFO     | node_pdf_to_md.py   :step_2_upload_and_poll:175  - [任务轮询] 结果ZIP包下载链接：https://cdn-mineru.openxlab.org.cn/pdf/2026-03-16/1ed6de67-2914-4917-b47e-57642836052d.zip...
+2026-03-19 16:35:19.562 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:197  - ===== 开始处理[hl3040网络说明书]的MinerU解析结果 =====
+2026-03-19 16:35:19.565 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:200  - [步骤1/4] 开始下载ZIP包，链接：https://cdn-mineru.openxlab.org.cn/pdf/2026-03-16/1ed6de67-2914-4917-b47e-57642836052d.zip...
+2026-03-19 16:35:19.895 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件']
+2026-03-19 16:35:21.028 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:209  - [步骤1/4] ZIP包下载成功，保存路径：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed\hl3040网络说明书_result.zip
+2026-03-19 16:35:21.032 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:212  - [步骤2/4] 开始解压ZIP包...
+2026-03-19 16:35:21.236 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:230  - [步骤2/4] ZIP包解压完成，解压目录：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed\hl3040网络说明书
+2026-03-19 16:35:21.239 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:233  - [步骤3/4] 开始查找解压目录中的MD文件...
+2026-03-19 16:35:21.244 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:237  - [步骤3/4] 共找到1个MD文件，按优先级匹配目标文件
+2026-03-19 16:35:21.248 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:252  - [步骤4/4] 匹配到优先级2目标：MinerU默认文件 full.md
+2026-03-19 16:35:21.252 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:261  - [步骤4/4] 开始重命名MD文件，统一为PDF同名：hl3040网络说明书.md
+2026-03-19 16:35:21.259 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:268  - [步骤4/4] MD文件重命名成功：hl3040网络说明书.md
+2026-03-19 16:35:21.261 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:274  - ===== [hl3040网络说明书]解析结果处理完成，最终MD文件路径：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed\hl3040网络说明书\hl3040网络说明书.md =====
+2026-03-19 16:35:21.267 | INFO     | node_pdf_to_md.py   :node_pdf_to_md :307  - 【node_pdf_to_md】MD文件生成成功，路径：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed\hl3040网络说明书\hl3040网络说明书.md
+2026-03-19 16:35:21.278 | INFO     | node_pdf_to_md.py   :node_pdf_to_md :317  - 【node_pdf_to_md】节点执行完成，更新后工作流状态键：['task_id', 'is_md_read_enabled', 'is_pdf_read_enabled', 'is_normal_split_enabled', 'is_silicon_flow_api_enabled', 'is_advanced_split_enabled', 'is_vllm_enabled', 'local_dir', 'local_file_path', 'file_title', 'pdf_path', 'md_path', 'split_path', 'embeddings_path', 'md_content', 'chunks', 'item_name', 'embeddings_content']
+2026-03-19 16:35:21.282 | INFO     | file_import_service.py:run_graph_task :97   - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] LangGraph节点执行完成：node_pdf_to_md
+2026-03-19 16:35:21.287 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：001a81a72e5475fbc7db4c1f0d9c5a399ddddcb225e3407a66d6a9eef3298ff6.jpg
+2026-03-19 16:35:21.292 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：00507441b018af0c0296e4c03d3f6ae6832cdf853c421ce2967e593c4de9adad.jpg
+2026-03-19 16:35:21.295 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：00eb76def1e7b2d12e18f7055f26c8b62b36b9deb81f094fd8d65be8352f69e4.jpg
+2026-03-19 16:35:21.299 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：02b07c798595cd5d16f556447dbf8aa092953531d3185dedbf38fc48b5be65bc.jpg
+2026-03-19 16:35:21.304 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：03f77fa267a5603784c746f91315aebc952870991ce3594fdf60273b392aef7e.jpg
+2026-03-19 16:35:21.307 | WARNING  | node_md_img.py      :step_2_scan_images:117  - 图片未在MD中引用，跳过处理：040369f336a7a40afb1bb8bdc7df62f2da891b7f0cb6cc44c58b12cc3ca6c792.jpg
+2026-03-19 16:35:21.310 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：0c234f4da3455c69ce210acd205686e933fed555c15b9062ea683664cd9dd4c2.jpg
+2026-03-19 16:35:21.313 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：0c541cce7649b5fc7d7ac24b19151df2f6a876c04d86041fe101ea7774ea931a.jpg
+2026-03-19 16:35:21.316 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：0d12d3b696783a937c4f4dde31035b5c77d1bb15006610828778a7451a1b6067.jpg
+2026-03-19 16:35:21.320 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：0d3928b5d33c6d6545761ca35cde01e1aab60a09bb36cd6082bf38ab43074f4d.jpg
+2026-03-19 16:35:21.323 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：0e675d97e14c4c0acdc18a38b933f86d7f99ec799c0156c68438182c2983a3a5.jpg
+2026-03-19 16:35:21.326 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：0f94c909d821c911cfcb34ab5e5bb980e5bfbe41d6031830449164ce2511dd1d.jpg
+2026-03-19 16:35:21.329 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：0fb3a8a5de61d31ee8071191f39c5b3016d26af11d67aa73b7b7cf943c6c8380.jpg
+2026-03-19 16:35:21.332 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：1003179e902097aae8e1a42ab3d439e8f74e84dc0983bc0956a967e2f6b9476e.jpg
+2026-03-19 16:35:21.336 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：12441559dd8669421693155f0f5afb239ac6925a390a8fb34b435143f8154e18.jpg
+2026-03-19 16:35:21.339 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：1883c6ded572b48790ad369ae62c617bcb7d4d3f77850946773b0111a5293a2b.jpg
+2026-03-19 16:35:21.342 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：18a9e17217abbd9e12634726ff6d2d9af6430fa343a7e0167db1a409d6b9795b.jpg
+2026-03-19 16:35:21.345 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：1b3aed721806663b2c70555869ed1803ea92cc2607798ee24ab7e0ff9c6281bf.jpg
+2026-03-19 16:35:21.348 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：1be5607a8a26e31df40279ad74eff9a68c6570e424c6016e41002ac52bf95130.jpg
+2026-03-19 16:35:21.353 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：1c9b23bb2861016a5652435383cb0e39653f8812296c7ed96920cfa9c2aeba87.jpg
+2026-03-19 16:35:21.357 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：1dc99f71783d63d5e05a782dc6e0621f4aade8dbdddcde195d74b22d81382a42.jpg
+2026-03-19 16:35:21.361 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：1f031f89a950ef145e972ea2b35c75286d2a7e1105ba6f47206803355bcd3516.jpg
+2026-03-19 16:35:21.364 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：1fa2010d51ad267fefb281191706d79506faebe3a5dbf8cb325860e9e74666f2.jpg
+2026-03-19 16:35:21.367 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：20d6950d9f386f1bb2e9033c71ee4fb2fc77859ad1f44b9a3426276d76eeeca2.jpg
+2026-03-19 16:35:21.373 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：22811ddc91eb3692b92d6c530ccc7ee7b945f7166525f1064fe59b5f3f824c69.jpg
+2026-03-19 16:35:21.377 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：22e461f46f9a0934dabd985f3b0ae6d6d60702de700609abdab044e517e6f030.jpg
+2026-03-19 16:35:21.381 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：24f90010f9e301141a1027a1eee0d7cf8e786c0b4ae4cdf7d41dd49bb594bdde.jpg
+2026-03-19 16:35:21.385 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：25a530eaf55c359449f85d9c7fcbb02f5a6311ca4a3ffeee58da5e5d2b332bcb.jpg
+2026-03-19 16:35:21.388 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：27be04cda03383ea021c6fb3a8b0fb8057854d2260042c1b21346b3df3cf1b33.jpg
+2026-03-19 16:35:21.391 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：2825f236214232dafb67340e8a7b5cb62f49584105dc233bada04db28b6c690f.jpg
+2026-03-19 16:35:21.394 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：29635c62c655ffa3846c476a8ba4aa424042b1b8d9a2d32d6b398de33538be47.jpg
+2026-03-19 16:35:21.399 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：2b4b516840d949b9e728fb0efd2fcb6f1d7eb3dd00aab2975f95dc97473eec5c.jpg
+2026-03-19 16:35:21.404 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：2d28c8d6602870b5211b6485bc72ba8fd62bf2d79597f7fc04272c755ba2db19.jpg
+2026-03-19 16:35:21.406 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：31449a32f6261f53ccde58abddc21145cc18bd76d6c8efc0f3d34e390be25e84.jpg
+2026-03-19 16:35:21.410 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：314a9b6a5098f2ba14a5666531eb32d259cadfb46b5e0d7e188513b149c5fcbf.jpg
+2026-03-19 16:35:21.414 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：32f945f12816d9ac7d5b729029d1bb7ae4916aa2978bc3d4581415ed4b226153.jpg
+2026-03-19 16:35:21.417 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：336b2488ccd060ddd866f8d5a1e58e14a021d0f7e239af6f3d7f00307ea77c2e.jpg
+2026-03-19 16:35:21.420 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：33adb8d76306936ec87113eaf687621621ac2daae6c81abd03f33ea2607cf3c5.jpg
+2026-03-19 16:35:21.423 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：35c4baac7bade73e2395888ba581113b3713cae4dba01e2ed0a12c84ce9a541d.jpg
+2026-03-19 16:35:21.426 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：36a435af66b1267fdd3d5851120274462ec81686972ca0a4ce158bd08696fbd4.jpg
+2026-03-19 16:35:21.430 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：36bad3c7e073bf2f31a802a63e75a04ab5d375f2a6e50e4cd69cedf8cba1deee.jpg
+2026-03-19 16:35:21.433 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：3ab065ca5f39b92983a02d2bb897c6ce984cd30f753ff5c202dc17ed07797411.jpg
+2026-03-19 16:35:21.436 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：3adf4a4f4a95257b1056cb22a29476a6b989a4689da1bda25189f827dffdd95d.jpg
+2026-03-19 16:35:21.439 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：3b2778eb08d61f2c133ce387efc531151706b8e677146c91c8843dc00f79e99c.jpg
+2026-03-19 16:35:21.442 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：3bc91387cf8783f82abea6a7daecde37f6dde3a5c411967a9745046b0eed4f3d.jpg
+2026-03-19 16:35:21.447 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：3d1a387c4d97ebd19976c80b35f4e9acfb75fd89eae3fbc6f2a5e488a853250e.jpg
+2026-03-19 16:35:21.452 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：3e47e820c5be2d8e829982a229654ed996355e222360799a2af91ecb14fb0790.jpg
+2026-03-19 16:35:21.455 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：3f093688f0b20c6943d7cd12b6f782f80bcc4be54fd4c78acf9e75fb91ca31c9.jpg
+2026-03-19 16:35:21.459 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：4048df6e46b06049e9253ee6d2684df10c317f1bc87df81bbc75689dd3cd1446.jpg
+2026-03-19 16:35:21.464 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：421f81109f141a2eae6a48d789f07bd3b0945b7b71c342f7072dc6d1202b676b.jpg
+2026-03-19 16:35:21.468 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：42382376a0700800bdbb58469e6418fcada90e711162a057aed8f46f247881e6.jpg
+2026-03-19 16:35:21.472 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：438c8ff80ebccb1499ba32d96cd43d0c07dc42f12d42f01822a1299bb7f5ec1d.jpg
+2026-03-19 16:35:21.477 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：43c195045bb57c0d4bd1266a99a1db0a783d66ba68975eaf122eb5c78a775121.jpg
+2026-03-19 16:35:21.480 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：4415d08aae1b2d21e69d0073fad158788978cf286a8d5da216292f9a1e1a88e8.jpg
+2026-03-19 16:35:21.482 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：45106a8ad3ef37c66f84cb694f0cf4bd4ef108c51994275827843971e2a08810.jpg
+2026-03-19 16:35:21.485 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：4542622d899002b6a726829923462778187b3d7d94c3acbae3c692f9775e99f5.jpg
+2026-03-19 16:35:21.488 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：45c3e03f32350afa48009f34ac5ba02dc538adda29fbfcbf77f2a8ea531ce3ab.jpg
+2026-03-19 16:35:21.493 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：4627688b527444353c45d890d5e3935094a9bb14f7d45d4a05d7986ddfd217d6.jpg
+2026-03-19 16:35:21.498 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：463b34b2569a7b27a54db3f3cf4fbdf77de60889d7479a85103192cabbaad961.jpg
+2026-03-19 16:35:21.502 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：489593e2681cd079f98674e6ebf9a750bfa48d329875afa7d7dc009fd43bd6df.jpg
+2026-03-19 16:35:21.505 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：49d80fe86f128f8c8a2a967194a529d062e0145ec99ba18c1221f6c459003386.jpg
+2026-03-19 16:35:21.510 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：4a691caac993da7e2945ed3024186a05a288dc60680e5e4625111e704c174e14.jpg
+2026-03-19 16:35:21.513 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：4d6f69380b333763ffc41a3d5534336f0eac69fde29c62675a3e2c8d4d3477bb.jpg
+2026-03-19 16:35:21.517 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：4e114bf8a2542103945bde52249a7ca629631bc88c18827f36647659cf203fee.jpg
+2026-03-19 16:35:21.521 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：4eaf24ed1a59938c965f799a0dd69d6f0a578fe6d21b822f0d2acb0ca4fa57bf.jpg
+2026-03-19 16:35:21.525 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：4fd1868b0f1d38122b1cbeaac85d66a5745302ae771a35b8cad1d5f59ea70dd3.jpg
+2026-03-19 16:35:21.529 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：51e0ec483622ab0a662141f4126f09ac6836f8bc272f0de36189ea64508e86a7.jpg
+2026-03-19 16:35:21.533 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：52564a2d3d73ba04868fe45fa2dc1cface510ed23d998c632c54a3088b93bc57.jpg
+2026-03-19 16:35:21.537 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：558d492799f8df5dfa5c059a6b707612557efe1ab63edcc34b99d98cca5e603f.jpg
+2026-03-19 16:35:21.542 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：55dbff38ff08b5d134712d51fb98bfe6565ac66252290fee758d9bd1ac0e4496.jpg
+2026-03-19 16:35:21.545 | WARNING  | node_md_img.py      :step_2_scan_images:117  - 图片未在MD中引用，跳过处理：55fce94cd45e5864e63f3378570dd1754e0972925269d052560b8de0795e34ec.jpg
+2026-03-19 16:35:21.549 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：56ab98abfc1688dfb9ae830fc64506d3640d2230b6274cb8c9057fc77e4e7947.jpg
+2026-03-19 16:35:21.554 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：584cdd42bcddec0c182302ba82dd84fad0c1969ef45e52608754b83e263c1738.jpg
+2026-03-19 16:35:21.557 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：5af26fd7a36fa7d4240fa7dbec91475579d50176a1363423cc142a63cda18ff9.jpg
+2026-03-19 16:35:21.560 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：5ba9c12ba8a054f4d2fbc6b6dbe375181971bad97fea516a31eb9c726f79e485.jpg
+2026-03-19 16:35:21.564 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：5bffdd8910600a1c1b6138cc49aa10611b7c3c1647771f1d0003a788d2c1b7ec.jpg
+2026-03-19 16:35:21.569 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：5c526742fbdd533d8efc07e58a6e2e92d776ff0f6a888c0ecd5cf0c00ae51615.jpg
+2026-03-19 16:35:21.574 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：5fac36f0586b9ba5046d51f85ec3052b90cad1e29c89fb412aecddadab7e838c.jpg
+2026-03-19 16:35:21.578 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：633aa3539a165cbcdbc36a9e509f5ac54b591a4d897e4bfcd39be44d6cd08123.jpg
+2026-03-19 16:35:21.583 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：633ddd08e3c60c02f48acd2b6929d41ab972ffd80f2becad7edb6e986fbdc3db.jpg
+2026-03-19 16:35:21.586 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：6386901615450d8407b4afbb398545341825a8f862fbf4a2bd8a76118fcd0236.jpg
+2026-03-19 16:35:21.589 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：63c673fe29bce88c8ad78bf1ad572b3c17c666be6a284ee3918db4febb569430.jpg
+2026-03-19 16:35:21.594 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：640f6af984be91d99273dbf67021500db0d8d48dbcc82b024622113aadae61ec.jpg
+2026-03-19 16:35:21.598 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：644e1bd41aa6b32e86b2b973aa314cfb0ac4498a71a47381b359aa9594accca5.jpg
+2026-03-19 16:35:21.602 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：65c9e48bc6096fc8ba85e176dd6502f474b22691df2b90640ba03b6ca8c78621.jpg
+2026-03-19 16:35:21.606 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：67338d58cbacad2e28f3df3da8433ff96f468a4763a09681e1868c7a358a5efc.jpg
+2026-03-19 16:35:21.609 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：6779915fec21875b84b5e17202069f61317a565d6a9135111b1dde51a32776aa.jpg
+2026-03-19 16:35:21.612 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：68c2d34179f34b999e7a6a797c215d895ac49365b95b407eee959cb025b9846c.jpg
+2026-03-19 16:35:21.615 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：6a58faf3abf098d1b63b9b5243cc549721c39f273afde06f1d2bde0287cdb321.jpg
+2026-03-19 16:35:21.618 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：6a856833a33dfdb5f7d7aa97402ae0491f4a812cc041a7e67486b93afa241116.jpg
+2026-03-19 16:35:21.621 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：6af7fe67f71bc5c928fd5f5c1458cfd50daf13b7902ae89eb467d3654916ba0a.jpg
+2026-03-19 16:35:21.625 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：6bd34ce757b21edaa375cd433edbe7636fcfba44d441f0b4078cce5d9f47a221.jpg
+2026-03-19 16:35:21.628 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：6d0ce415a8ea25845e4ebf5a5023ef341dde1fe1a4d0403dfc7a8558b6462d29.jpg
+2026-03-19 16:35:21.632 | WARNING  | node_md_img.py      :step_2_scan_images:117  - 图片未在MD中引用，跳过处理：6e8abaef47b5bbce28d6b01c55e24e35f9418162df174687afab0f3b2c89ea6b.jpg
+2026-03-19 16:35:21.635 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：71b05a356d8990af4532f2d2e3f6439c9f8cd6380220c1ba97e0a00d4a4f9376.jpg
+2026-03-19 16:35:21.638 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：7700465df827278887a8a1962e621e5c6d482c97eba90aed59d2fe96e672225d.jpg
+2026-03-19 16:35:21.641 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：78859b910695ef844b79e797f4e102a83ca67575b540166a92a83d0facbf1412.jpg
+2026-03-19 16:35:21.644 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：7958eff349b004a51f33e5c7196f33117e0effecacf4fdab2826b74fc0997609.jpg
+2026-03-19 16:35:21.647 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：7ad49c7a8c69c41a43fb479f61c32d6ffd4078ff86de84c44b50afad6ca4ed96.jpg
+2026-03-19 16:35:21.650 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：7d4c9e439687f5a1764884ff32f7c0b7f9584c31a277eb4c88d204abc4dcaa7c.jpg
+2026-03-19 16:35:21.656 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：7d931bd33bda1a9a84c8980780a64a56823e1fb4db38b78c8b6389c9b44f5470.jpg
+2026-03-19 16:35:21.661 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：7e26def3f60a33d3c96d8a4fd7f16a2a2ae979dfe69886276c734a48c19c4914.jpg
+2026-03-19 16:35:21.664 | WARNING  | node_md_img.py      :step_2_scan_images:117  - 图片未在MD中引用，跳过处理：7e3f2efd4800cf96fac612c0e690c52c8a8b1ec634b5849e0aee160fc60f7d57.jpg
+2026-03-19 16:35:21.668 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：809ca53fa320ac585e0e9f0ab652418135fe3cf05b4d2b6b265a21fecfa22658.jpg
+2026-03-19 16:35:21.673 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：80b5b581e94bedf6e5d6f73c3d059b751a078bc5132df62540c392246313a81a.jpg
+2026-03-19 16:35:21.676 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：81c1ad89e69e5389252423fcb58b44194149ca784360463d1d3015a92634f1fc.jpg
+2026-03-19 16:35:21.680 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：848e950741820ac4c527c8d14d814a6b64f5c579e96faf4aabe67a5a279304a7.jpg
+2026-03-19 16:35:21.683 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：85e09e8eb2d38803e192a30334616b8e33de8d7a3cb28c2f6e057bee3bfa000e.jpg
+2026-03-19 16:35:21.687 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：861f811de5c658588752676b96a8264c5946113f8ede5b5396bc1f86a05b0f3d.jpg
+2026-03-19 16:35:21.692 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：86e22eedc2112bf589bbfc2559231bae4741635e707950d01e7ebefe403497e2.jpg
+2026-03-19 16:35:21.696 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：879c8dd9ca9a9cf395a412e8c60541cf11e07c04ab00f1915881ae86af13a165.jpg
+2026-03-19 16:35:21.701 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：896ce9943801fcdb09961d83f077d731d888ad58d4bdaae94dd2ffa1f84e01ae.jpg
+2026-03-19 16:35:21.705 | WARNING  | node_md_img.py      :step_2_scan_images:117  - 图片未在MD中引用，跳过处理：8970cb7fe93f91bd0e2917cc22e63aac1cf82603e82a6d74f10c5a1282e7e568.jpg
+2026-03-19 16:35:21.709 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：8a017d166fbc5121021d0ea27237995b1948fcfea26013877127c8642ba97644.jpg
+2026-03-19 16:35:21.712 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：8ad4623ee8c0267bf89274337173a7c7d8054770ac5131cab71756b60e8a32f9.jpg
+2026-03-19 16:35:21.717 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：8b2cd96e6fba7b5fa63be9e285d757624b49f8af32551f9209cc5a17e57bd6db.jpg
+2026-03-19 16:35:21.721 | WARNING  | node_md_img.py      :step_2_scan_images:117  - 图片未在MD中引用，跳过处理：8d2ba08dd800dee010ae4e9517db8a0ae9171436b48ecea548df0e5c09f53d94.jpg
+2026-03-19 16:35:21.727 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：8e3c2f08e61bd8dc4e17b1b316aec9ba11881a4a533a1652cd389f563bacb9f9.jpg
+2026-03-19 16:35:21.732 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：9093e495991505d2baf5752e33caf515db7e9df4bf6d35238c100ac333843299.jpg
+2026-03-19 16:35:21.737 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：91d3245722788a62c31c5ef31afa0f5fdedd12c1f96368bcad0498473e3b933a.jpg
+2026-03-19 16:35:21.743 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：92a78a16d5848a130c471d2112494bf3a7004030087f3ef7a548f99a94d46ba6.jpg
+2026-03-19 16:35:21.748 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：937136596eaa7139fc8b20baac7d72965db23b76b1b02fd8f46db5e79002c1e1.jpg
+2026-03-19 16:35:21.752 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：93abc97554b4f7475101c045ab4c5aa4e89cb2dd580b5f665cba8028761410f3.jpg
+2026-03-19 16:35:21.757 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：93c3f5a0b4f8e38cf88422fc0150460c59a5d03aac7bbcbd0c52ce332412372b.jpg
+2026-03-19 16:35:21.760 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：940109f39d8f5cc6833987992287533c7a7e2d261dcb4e6f4191d0031e9c720e.jpg
+2026-03-19 16:35:21.764 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：94ea0edb527605c14f6a0e83db5623e5752834fb58945ad3f7f9650822f869a1.jpg
+2026-03-19 16:35:21.767 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：9891e8d83b7f33b74ae9ba808bf922bf76d7bde271a0e32b41c5b2f7c679a64b.jpg
+2026-03-19 16:35:21.772 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：99788b983647a48477d1cce333970ab40334d667fca47b3d99524a3b25d3b7d1.jpg
+2026-03-19 16:35:21.778 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：9a11d9a1b8c2eca8829cdd5188d406aa8f68574221e70fd00a89d70c5710d8f8.jpg
+2026-03-19 16:35:21.781 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：9f588024d91aad5eca7c8e832f7d176870c3511536062fc3c3c24274e58da072.jpg
+2026-03-19 16:35:21.787 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：9ffcaaf020be1c832dfb1b19ba0c57954fdba0eaccd82970166ae0215c577cd2.jpg
+2026-03-19 16:35:21.790 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：a15f2bbd8f179c707e111bacf6b81f5616a40a4dc3ad80063a6f5238a5ad2b20.jpg
+2026-03-19 16:35:21.793 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：a1d833d790dd9ab6e1f195b5a2f18b92270ca45bc90b01deea8c6211108887fd.jpg
+2026-03-19 16:35:21.798 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：a212c625eab37d62ff1136a3d3da28588be3bbe733660ce7b5f4c233732dc057.jpg
+2026-03-19 16:35:21.802 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：a292f5d6551c4000f23ef90f6d3ead4e246135332a75eb855b7fe8c5477c5d7f.jpg
+2026-03-19 16:35:21.807 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：a2ae4327d53388b95d7bd5a7434f722fde16deb75654f988fc51632d4047ba65.jpg
+2026-03-19 16:35:21.812 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：a2bc39951a98830e77b9e59f86a8fd433d8723c16227d6ad81ef64f7067db7b7.jpg
+2026-03-19 16:35:21.817 | WARNING  | node_md_img.py      :step_2_scan_images:117  - 图片未在MD中引用，跳过处理：a53d0592caa015792a82cd698d09aff2381f6f160169fddd12a9c6929a2b3402.jpg
+2026-03-19 16:35:21.821 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：a62770ee95933325744b68c0f16b3c62984c9e1055958203fcd6c00426d39ff3.jpg
+2026-03-19 16:35:21.824 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：a97f1d4ea18944c2b903fe2e1f8b0c35fa4609d7870ad07d57bb7e770b10c1b4.jpg
+2026-03-19 16:35:21.827 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：aa2d0d957f0ccdb9fb34e4301453715f53683413d88363d047747f88a094b0c7.jpg
+2026-03-19 16:35:21.833 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：abf64f0c3c8241a61cb3576f9872e7e2dee6753ce0ab17fd0f3509457308c2d5.jpg
+2026-03-19 16:35:21.836 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：ad6da86ac36f627349477c2264f382ecd87777f082cb28821ee618f2def94109.jpg
+2026-03-19 16:35:21.840 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：ae1b65e9d76512fac75293a26679251bb8f7cb5a7a79b609b95f89afbb083a18.jpg
+2026-03-19 16:35:21.845 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：b0afcaf9a7e2d06ee323811c1ccd03c026d20ac22945ce3f8233a6a514579196.jpg
+2026-03-19 16:35:21.850 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：b0c660d1d7ba9ed6bb1f52a8d32f72e93dd0ed1b9e47d8c889edb9775018e4ed.jpg
+2026-03-19 16:35:21.853 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：b1b976c786c3babafbb75b5c71c84ba351d7d0dae73e8d79743c65b3dbe71447.jpg
+2026-03-19 16:35:21.859 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：b1d567ecfb0ae0cc85b33b8d803281412164be73e0933a32f804aca27b31a0fd.jpg
+2026-03-19 16:35:21.862 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：b1db68bdf23534205e5c29bedf8ad7f63e04a9a6d5277ca00bfadad6092f2f4d.jpg
+2026-03-19 16:35:21.866 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：b22cf227869605aa936d1b8329a9885c87d39bdfa8c48ad6bdaf1a61e955c6e9.jpg
+2026-03-19 16:35:21.871 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：b4a01115f4bb5aed1e1e37d315fa66003e4cd50d86b651d664b561534f173c4c.jpg
+2026-03-19 16:35:21.876 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：b5bd065fec604268f77cc03f1196dc55f6d07bbd99bf20fd28c1387dcbab9f82.jpg
+2026-03-19 16:35:21.881 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：b608256e64bb798d61f452cfc59754414102d75d81e0cd4f3011b1e574b2cb43.jpg
+2026-03-19 16:35:21.885 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：baad9fa16f898bd149f0ad7d1e78d2e9be85786b5ab87898e4852744d4152e12.jpg
+2026-03-19 16:35:21.889 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：bab02a4891a90d6ab0235eb4104c6b0c6adc47bcae41c6a280f14828f008f951.jpg
+2026-03-19 16:35:21.893 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：bb6e2c1642fa4393f6321b1b75db706fd693cc41842f2c1a0fc67b12b9cfc941.jpg
+2026-03-19 16:35:21.901 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：be7ca01e7a2caeeb2e3c2cf375e9e152ce7ef43da954a8a5b1d5b486a320ec7f.jpg
+2026-03-19 16:35:21.896 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:35:21.906 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：bf5a80f1c3d9e3329a45af610f0382534e3587f8ac37882166190dba6c44dbdd.jpg
+2026-03-19 16:35:21.913 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：bf9156805bb7488beb2689ba35ae77f925d435981a19992448070657758d7f3c.jpg
+2026-03-19 16:35:21.917 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：c1489a10199b0bbb0c706dd5f4c32566112d51db7cf3d48c8305df6a6c180a80.jpg
+2026-03-19 16:35:21.920 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：c15cd8c9dc9cce40c012526019a0f5bb9c00136b377102089a89b815be119fc2.jpg
+2026-03-19 16:35:21.925 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：c1ba878383e17944b1522ae3008c6f902accafcf5bd034d33da075e01c9d5168.jpg
+2026-03-19 16:35:21.930 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：c1baf15bd0a63509a633d1d4b156abf47f2579d00ee640bcc63d6f4a918caf24.jpg
+2026-03-19 16:35:21.934 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：c216d2e4e53037e47b07a842ab9d89b4fdd2dfb002359003b8f2d8696edc4405.jpg
+2026-03-19 16:35:21.939 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：c21ebba688e5da456c17ad6017e54447f3c7294fd8208fa12faba35eaac648d5.jpg
+2026-03-19 16:35:21.943 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：c3ce164385e189691df0c22a822718951b87b90b2c8484cab9be9b1fb5480d1e.jpg
+2026-03-19 16:35:21.948 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：c47738564e95088e0c03359687f0f36cc12c04a11321bdbb1d7f8692aedf2845.jpg
+2026-03-19 16:35:21.952 | WARNING  | node_md_img.py      :step_2_scan_images:117  - 图片未在MD中引用，跳过处理：c5a9d7e99c2a885f87ec82173cfb4012392a02fe5caacae5ebb557434f58f09f.jpg
+2026-03-19 16:35:21.958 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：c8514d74a8021c815ba12ac7497a914d37a1b515fe1507f3f073f19e99800d74.jpg
+2026-03-19 16:35:21.963 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：ca8c48a9bbbb46b9b92a926fb239ddd768989818f04285976ff9528d2e084b78.jpg
+2026-03-19 16:35:21.968 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：ca954ceb423bc3f91bbf05836f1c9bccb40da2abf1617a52aa3768d6e5615117.jpg
+2026-03-19 16:35:21.971 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：caa4bb94186316a1cd241f716688ac91ff211b014c9b0f78d1feab393cd65f60.jpg
+2026-03-19 16:35:21.975 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：cad3c30400f74559ce1782acff5114d8ef5136c0b82da424e089d55e5d61f1d8.jpg
+2026-03-19 16:35:21.979 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：cd84026a066d422407dec1672aaa91cf5ca58ead77c251c025f9095448b6ad7b.jpg
+2026-03-19 16:35:21.983 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：d0db38d2fc60786e6f6b96044b0aad5db1c08fa4f02fa59dd642000ff60bdf08.jpg
+2026-03-19 16:35:21.989 | WARNING  | node_md_img.py      :step_2_scan_images:117  - 图片未在MD中引用，跳过处理：d4f5693833577115423d11699eabaa7c2dce1532c54593463e8522b5051ddf94.jpg
+2026-03-19 16:35:21.994 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：d5465c258d5fd47d9cba6fe33e06837c2af63da5e21bec5335e65690b53c2cf0.jpg
+2026-03-19 16:35:21.999 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：d724d448359da5767dc60fdf9f125022a109589758e524fe84cc5dfe93ea5529.jpg
+2026-03-19 16:35:22.004 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：d78a1af80fd049716afdbb2e3a4eb48142d91e9e6a7fa929d160f225d7e7c7d2.jpg
+2026-03-19 16:35:22.008 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：d80cde7416341d3ef0de527c1033ab784998a3f60d9c4cbd74d93e56a99b9110.jpg
+2026-03-19 16:35:22.012 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：d901b790b0cc3dae7a22587c457d492659770b4576fe98e1bd04401e2a17663e.jpg
+2026-03-19 16:35:22.015 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：d91f74d456317552f7e3eb57166ae3933a6f61c4ffe40d0f6fdab2be4c4e1900.jpg
+2026-03-19 16:35:22.020 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：d9a80740d36894cf45f5102f8122dd45d1a17e6f9bd61731e27c6e05af6a166c.jpg
+2026-03-19 16:35:22.025 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：da84bc8b779bf4f0b57816d4eb0773cffc50a0e5d9d1e58f7928aa0ff573d969.jpg
+2026-03-19 16:35:22.029 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：da862b1188b27d991f532c1959f4e6875798728d36fce2e85334efe43d0e566c.jpg
+2026-03-19 16:35:22.035 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：dcc382f05ea96d8a0614af6b8ad3e8ad89075a80928fbafa3f76152c43c09c34.jpg
+2026-03-19 16:35:22.039 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：dd06cc95295bc0546678a8bfa8ccdfcb7171b67a81011b4ce826cd6e1c2d3f6e.jpg
+2026-03-19 16:35:22.045 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：dd68c9ced2949b14587ab4ed3b713e324bcb189009265455c5cc238563966275.jpg
+2026-03-19 16:35:22.050 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：dfd40fb617e95246cfe34f864feaf19cef395c65cfda3c2a256e2e14b713c78b.jpg
+2026-03-19 16:35:22.056 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：e0d43ef75ebea41604cd1d48fbc3a9ae6b4fe6909909cf61a1540cd71ca853de.jpg
+2026-03-19 16:35:22.061 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：e1b7230513b69d355056f3a5d01316293b02243dfafe05572c296a33966d42e6.jpg
+2026-03-19 16:35:22.068 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：e322a101a1705b2ec1503f9016c2df9824f1d2f1a4e26619187552e2561418a9.jpg
+2026-03-19 16:35:22.073 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：e4d272a2f9cb3938bf4ad16de9adab4b8f220e96355a8e2baea0d1afa58d8a1a.jpg
+2026-03-19 16:35:22.078 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：e52e357cf198d508cd23504d32dc4ae72b216e7e0e4d51e45070dee8211a5a85.jpg
+2026-03-19 16:35:22.084 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：e5765e2bb775ac7eaf31da762724feff1194a8294a11b6512198a459defe1dab.jpg
+2026-03-19 16:35:22.089 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：e6b0aecb093c30ed37f7eef55d787f11fe6601fb586769d8a1a83bcc131259e7.jpg
+2026-03-19 16:35:22.095 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：e6e9649e2f6e13634644934640eb4d490a1b271202987dcad36f45bcbcfdaace.jpg
+2026-03-19 16:35:22.101 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：e73f602025b08a050038f7a0aaac8d5dc861bc52571f89c02d0ee783bd16dfab.jpg
+2026-03-19 16:35:22.105 | WARNING  | node_md_img.py      :step_2_scan_images:117  - 图片未在MD中引用，跳过处理：e7af226314300ae6a052acc2ae15e4143839076059c8bbbf9bacd9f08f9bafff.jpg
+2026-03-19 16:35:22.111 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：e8f14c6055f79ec5b244f60a5ba72c1572a11497542ee24009809871128b68dd.jpg
+2026-03-19 16:35:22.117 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：e9f7b06583c7de02ab12b0e05ddbb868be3b5579cf2d276c3e06f4aa6ccb0d01.jpg
+2026-03-19 16:35:22.121 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：ec1c84e8c6eb84176b172f50a02123e46370278f12a8433b2cb6accbdf90e9fb.jpg
+2026-03-19 16:35:22.126 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：ecc7716fefc89446bd35a0d8da1f1467f73bfbdc9c97cfdee3a25278a4c5c463.jpg
+2026-03-19 16:35:22.130 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：edc56a3a63f258dea069ee3e822382c324e43bd38d3e148b93a1eb9444c01074.jpg
+2026-03-19 16:35:22.135 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：eeae119a357af8c1b7b2ebbd5eeabea850bcd5af75d9b66e2959f42c7a9f5d85.jpg
+2026-03-19 16:35:22.139 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：f029b99cc1fff4b1412f0405ea9bfed14a3beccfe961520fd92312ecd0054a97.jpg
+2026-03-19 16:35:22.144 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：f1319ab86272ab7616e4615fb1f4c611529a7718f31293bd30fc471ef36ebd8b.jpg
+2026-03-19 16:35:22.150 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：f2ab46dca8cf268cafede26935ba4392455a8ad980fccbb3ecc22df932c802ac.jpg
+2026-03-19 16:35:22.154 | WARNING  | node_md_img.py      :step_2_scan_images:117  - 图片未在MD中引用，跳过处理：f4b976fb9dd33a15f3326566f0fe2232bd3f1331796776549f60f313d9bbec71.jpg
+2026-03-19 16:35:22.159 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：f54443afaaa12da0476adb0f0a6f1154e8b5ba819b1a52279f5ee20c37439dc5.jpg
+2026-03-19 16:35:22.164 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：f67176bd80427f733c2a86834c937acb0ee2db3a23ba4efe791610836843305c.jpg
+2026-03-19 16:35:22.168 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：f856007508cc9ef4a0c283c2ede939a5ad70eefe011e93a3ae7731669964aa90.jpg
+2026-03-19 16:35:22.174 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：f8dde078d33f833e91eb67b6f955730180e77da04cfe0db3819b1cee006af1fe.jpg
+2026-03-19 16:35:22.180 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：f91580c1133c3b8a6e53963324ec18d12c5013e74b375a938dddf52e231d0945.jpg
+2026-03-19 16:35:22.186 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：f91e4de5c412ffed5b684e3a75eca6448708b85c35e7a63d46875f00c49ddd7b.jpg
+2026-03-19 16:35:22.191 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：f9ff8957eb0617f44d8f9a3250171226137305c075b136fb883573e3f63bf797.jpg
+2026-03-19 16:35:22.197 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：fb52e55b0775f27cbb9581300e7996d53834867c03566a1a728b7dd10d483488.jpg
+2026-03-19 16:35:22.202 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：fc221de4779a5ce66b32277869160755f858c03761020c2898012a9d1eedf1ed.jpg
+2026-03-19 16:35:22.207 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：fc9fd01f3c7a347bf57f5b68677a609ba2419850bedd9c55674a5b7b4e19ab51.jpg
+2026-03-19 16:35:22.212 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：fd7d7a88cff2605849bf6e0b48ee9934c1d1cb4d80e9058a3a4a86b45398bf4c.jpg
+2026-03-19 16:35:22.216 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：fe4d50aedeaa91049acf73428ea4bd7c9bc4c92c5c775d681c69007675cfea1b.jpg
+2026-03-19 16:35:22.220 | INFO     | node_md_img.py      :step_2_scan_images:122  - 图片扫描完成，共筛选出待处理图片：210 张
+2026-03-19 16:35:22.231 | INFO     | lm_utils.py         :get_llm_client :44   - [LLM客户端] 开始初始化新实例：模型=qwen3-vl-flash，JSON模式=False
+2026-03-19 16:35:23.562 | INFO     | lm_utils.py         :get_llm_client :71   - [LLM客户端] 实例初始化成功并缓存：模型=qwen3-vl-flash，JSON模式=False
+2026-03-19 16:35:23.900 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:35:24.387 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed\hl3040网络说明书\images\001a81a72e5475fbc7db4c1f0d9c5a399ddddcb225e3407a66d6a9eef3298ff6.jpg，摘要：图片内容为网络打印协议说明，涵盖IPP、IPPS及mDNS等技术，用于打印机网络配置与安全传输。
+2026-03-19 16:35:25.372 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed\hl3040网络说明书\images\00507441b018af0c0296e4c03d3f6ae6832cdf853c421ce2967e593c4de9adad.jpg，摘要：证书安装提示窗口，显示CA根证书不被信任，需安装至受信任根证书存储，并高亮“安装证书”按钮。
+2026-03-19 16:35:25.895 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:35:26.064 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed\hl3040网络说明书\images\00eb76def1e7b2d12e18f7055f26c8b62b36b9deb81f094fd8d65be8352f69e4.jpg，摘要：无线设备安装向导界面，用户选择“仅安装驱动软件”选项并点击下一步，适用于已配置无线但未装驱动的设备。
+2026-03-19 16:35:26.937 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed\hl3040网络说明书\images\02b07c798595cd5d16f556447dbf8aa092953531d3185dedbf38fc48b5be65bc.jpg，摘要：Brother打印服务器支持SNMPv1/v2c/v3，SNMPv3安全协议见第91页；LLMNR用于无DNS环境的本地设备发现。
+2026-03-19 16:35:27.628 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed\hl3040网络说明书\images\03f77fa267a5603784c746f91315aebc952870991ce3594fdf60273b392aef7e.jpg，摘要：Windows UAC弹窗提示管理员密码输入，箭头指向“确定”按钮，用于授权未识别程序访问计算机。
+2026-03-19 16:35:27.895 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:35:28.346 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed\hl3040网络说明书\images\0c234f4da3455c69ce210acd205686e933fed555c15b9062ea683664cd9dd4c2.jpg，摘要：HL3040网络说明书：配置POP3/SMTP验证设置，支持TP或SMTP-AUTH，需匹配邮件服务器参数。
+2026-03-19 16:35:29.478 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed\hl3040网络说明书\images\0c541cce7649b5fc7d7ac24b19151df2f6a876c04d86041fe101ea7774ea931a.jpg，摘要：网络设备IP设置与无线功能启用说明，含手动配置及提交后自动切换提示。
+2026-03-19 16:35:29.910 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:35:29.981 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed\hl3040网络说明书\images\0d12d3b696783a937c4f4dde31035b5c77d1bb15006610828778a7451a1b6067.jpg，摘要：确认无线设置完成，按指引安装驱动程序并注意安装过程勿取下设备。
+2026-03-19 16:35:31.011 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed\hl3040网络说明书\images\0d3928b5d33c6d6545761ca35cde01e1aab60a09bb36cd6082bf38ab43074f4d.jpg，摘要：打印机网络配置指南：输入IP地址访问打印服务器，支持DNS域名或TCP/IP协议。
+2026-03-19 16:35:31.900 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:35:33.906 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:35:35.895 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:35:37.907 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:35:39.899 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:35:41.896 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:35:43.902 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:35:45.900 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:35:47.898 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:35:49.908 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:35:51.896 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:35:53.901 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:35:55.906 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:35:57.894 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:35:59.900 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:36:01.902 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:36:03.897 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:36:05.905 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:36:07.908 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:36:09.908 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:36:11.908 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:36:13.906 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:36:15.902 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:36:17.899 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:36:19.896 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:36:21.903 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:36:23.102 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed\hl3040网络说明书\images\0e675d97e14c4c0acdc18a38b933f86d7f99ec799c0156c68438182c2983a3a5.jpg，摘要：Brother无线设备网络连接指南：用网线连接接入点与设备，点击“下一步”继续配置。
+2026-03-19 16:36:23.908 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:36:25.284 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed\hl3040网络说明书\images\0f94c909d821c911cfcb34ab5e5bb980e5bfbe41d6031830449164ce2511dd1d.jpg，摘要：Windows浏览器提示打印机网站证书错误，推荐关闭页面而非继续访问，图示蓝色箭头指向“继续浏览此网站（不推荐）”选项。
+2026-03-19 16:36:25.905 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:36:26.131 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed\hl3040网络说明书\images\0fb3a8a5de61d31ee8071191f39c5b3016d26af11d67aa73b7b7cf943c6c8380.jpg，摘要：无线设备安装向导界面，用户选择“仅安装驱动软件”选项并点击“下一步”继续安装流程。
+2026-03-19 16:36:26.808 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed\hl3040网络说明书\images\1003179e902097aae8e1a42ab3d439e8f74e84dc0983bc0956a967e2f6b9476e.jpg，摘要：HL3040网络说明书：介绍内置HTTP网络服务器功能，支持浏览器监控设备状态与配置设置，推荐Windows用户使用IE6或Firefox1.0以上版本。
+2026-03-19 16:36:27.768 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed\hl3040网络说明书\images\12441559dd8669421693155f0f5afb239ac6925a390a8fb34b435143f8154e18.jpg，摘要：Windows 系统中双击“Certificate”安全证书文件的界面截图，指示用户打开保存路径并执行操作。
+2026-03-19 16:36:27.896 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:36:28.740 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed\hl3040网络说明书\images\1883c6ded572b48790ad369ae62c617bcb7d4d3f77850946773b0111a5293a2b.jpg，摘要：HL3040打印机创建与安装自签名证书的操作指南，含命名规则与SSL/TLS使用说明。
+2026-03-19 16:36:29.298 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed\hl3040网络说明书\images\18a9e17217abbd9e12634726ff6d2d9af6430fa343a7e0167db1a409d6b9795b.jpg，摘要：打印机网络配置指南：输入IP地址或节点名，打印配置页获取信息，继续下一步设置。
+2026-03-19 16:36:29.907 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:36:30.492 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed\hl3040网络说明书\images\1b3aed721806663b2c70555869ed1803ea92cc2607798ee24ab7e0ff9c6281bf.jpg，摘要：SNMP v1/v2c 读写访问模式不安全，无用户验证与加密；推荐使用 BRAdmin 专业版提升网络管理安全性。
+2026-03-19 16:36:31.270 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed\hl3040网络说明书\images\1be5607a8a26e31df40279ad74eff9a68c6570e424c6016e41002ac52bf95130.jpg，摘要：安全警告对话框：证书信任问题提示，建议查看证书详情并确认是否继续访问。
+2026-03-19 16:36:31.901 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:36:33.901 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:36:36.296 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:36:38.293 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:36:40.293 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:36:42.290 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:36:44.298 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:36:46.296 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:36:48.284 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:36:50.295 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:36:52.290 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:36:54.288 | INFO     | file_import_service.py:get_task_progress:223  - [ac31a95b-4cfb-4243-9ec7-4a8b4412c8ed] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:37:02.704 | INFO     | minio_utils.py      :<module>       :29   - MinIO存储桶[knowledge-base-files]已存在，无需重复创建
+2026-03-19 16:37:02.851 | INFO     | minio_utils.py      :<module>       :42   - MinIO存储桶[knowledge-base-files]已配置公网只读策略，支持匿名URL访问
+2026-03-19 16:37:12.276 | INFO     | file_import_service.py:<module>       :234  - File Import Service 服务启动中...
+2026-03-19 16:38:27.037 | INFO     | file_import_service.py:upload_files   :140  - [f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3] 开始处理上传文件，文件名：hak180产品安全手册.pdf，文件类型：application/pdf
+2026-03-19 16:38:27.409 | INFO     | file_import_service.py:upload_files   :154  - [f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3] 文件已保存至本地，路径：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3\hak180产品安全手册.pdf
+2026-03-19 16:38:27.531 | INFO     | file_import_service.py:upload_files   :178  - [f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3] 文件已成功上传至MinIO，桶名：knowledge-base-files，对象名：pdf_files/20260319/hak180产品安全手册.pdf
+2026-03-19 16:38:27.540 | INFO     | file_import_service.py:upload_files   :188  - [f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3] 已将LangGraph全流程加入后台任务，任务已启动
+2026-03-19 16:38:27.548 | INFO     | file_import_service.py:upload_files   :191  - 多文件上传处理完毕，共处理1个文件，生成TaskID列表：['f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3']
+2026-03-19 16:38:27.569 | INFO     | file_import_service.py:run_graph_task :85   - [f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3] 开始执行LangGraph全流程，本地文件路径：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3\hak180产品安全手册.pdf
+2026-03-19 16:38:27.586 | INFO     | node_entry.py       :node_entry     :37   - 【node_entry】文件类型校验通过：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3\hak180产品安全手册.pdf → PDF格式，开启PDF解析流程
+2026-03-19 16:38:27.591 | INFO     | node_entry.py       :node_entry     :50   - 【node_entry】文件业务标识提取完成：file_title = hak180产品安全手册
+2026-03-19 16:38:27.596 | INFO     | file_import_service.py:run_graph_task :97   - [f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3] LangGraph节点执行完成：node_entry
+2026-03-19 16:38:27.599 | INFO     | node_pdf_to_md.py   :step_2_upload_and_poll:68   - [配置校验] MinerU基础配置加载成功，开始处理文件：hak180产品安全手册.pdf
+2026-03-19 16:38:28.124 | INFO     | node_pdf_to_md.py   :step_2_upload_and_poll:96   - [获取上传链接] 成功，batch_id：f9305b54-1012-4ef2-8f9a-a291293a2a34，上传链接已生成
+2026-03-19 16:38:28.128 | INFO     | node_pdf_to_md.py   :step_2_upload_and_poll:99   - [文件上传] 开始读取PDF文件：hak180产品安全手册.pdf
+2026-03-19 16:38:28.801 | INFO     | node_pdf_to_md.py   :step_2_upload_and_poll:118  - [文件上传] 成功，文件hak180产品安全手册.pdf已存入云存储
+2026-03-19 16:38:28.806 | INFO     | node_pdf_to_md.py   :step_2_upload_and_poll:130  - [任务轮询] 开始监控任务状态，batch_id：f9305b54-1012-4ef2-8f9a-a291293a2a34，最大超时：600s
+2026-03-19 16:38:29.573 | INFO     | file_import_service.py:get_task_progress:223  - [f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件']
+2026-03-19 16:38:31.579 | INFO     | file_import_service.py:get_task_progress:223  - [f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件']
+2026-03-19 16:38:32.788 | INFO     | node_pdf_to_md.py   :step_2_upload_and_poll:171  - [任务轮询] 解析任务完成！总耗时：3s，batch_id：f9305b54-1012-4ef2-8f9a-a291293a2a34
+2026-03-19 16:38:32.791 | INFO     | node_pdf_to_md.py   :step_2_upload_and_poll:175  - [任务轮询] 结果ZIP包下载链接：https://cdn-mineru.openxlab.org.cn/pdf/2026-03-16/96c85ba6-435d-414b-b30c-cabb5c57b129.zip...
+2026-03-19 16:38:32.798 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:197  - ===== 开始处理[hak180产品安全手册]的MinerU解析结果 =====
+2026-03-19 16:38:32.800 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:200  - [步骤1/4] 开始下载ZIP包，链接：https://cdn-mineru.openxlab.org.cn/pdf/2026-03-16/96c85ba6-435d-414b-b30c-cabb5c57b129.zip...
+2026-03-19 16:38:33.397 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:209  - [步骤1/4] ZIP包下载成功，保存路径：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3\hak180产品安全手册_result.zip
+2026-03-19 16:38:33.401 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:212  - [步骤2/4] 开始解压ZIP包...
+2026-03-19 16:38:33.427 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:230  - [步骤2/4] ZIP包解压完成，解压目录：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3\hak180产品安全手册
+2026-03-19 16:38:33.432 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:233  - [步骤3/4] 开始查找解压目录中的MD文件...
+2026-03-19 16:38:33.435 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:237  - [步骤3/4] 共找到1个MD文件，按优先级匹配目标文件
+2026-03-19 16:38:33.439 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:252  - [步骤4/4] 匹配到优先级2目标：MinerU默认文件 full.md
+2026-03-19 16:38:33.443 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:261  - [步骤4/4] 开始重命名MD文件，统一为PDF同名：hak180产品安全手册.md
+2026-03-19 16:38:33.447 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:268  - [步骤4/4] MD文件重命名成功：hak180产品安全手册.md
+2026-03-19 16:38:33.452 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:274  - ===== [hak180产品安全手册]解析结果处理完成，最终MD文件路径：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3\hak180产品安全手册\hak180产品安全手册.md =====
+2026-03-19 16:38:33.457 | INFO     | node_pdf_to_md.py   :node_pdf_to_md :307  - 【node_pdf_to_md】MD文件生成成功，路径：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3\hak180产品安全手册\hak180产品安全手册.md
+2026-03-19 16:38:33.467 | INFO     | node_pdf_to_md.py   :node_pdf_to_md :317  - 【node_pdf_to_md】节点执行完成，更新后工作流状态键：['task_id', 'is_md_read_enabled', 'is_pdf_read_enabled', 'is_normal_split_enabled', 'is_silicon_flow_api_enabled', 'is_advanced_split_enabled', 'is_vllm_enabled', 'local_dir', 'local_file_path', 'file_title', 'pdf_path', 'md_path', 'split_path', 'embeddings_path', 'md_content', 'chunks', 'item_name', 'embeddings_content']
+2026-03-19 16:38:33.472 | INFO     | file_import_service.py:run_graph_task :97   - [f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3] LangGraph节点执行完成：node_pdf_to_md
+2026-03-19 16:38:33.475 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：249fa4657bc1fd69ca12d3735f5dae5c4452840980633d314aa69411a3e31a44.jpg
+2026-03-19 16:38:33.479 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：29245869565f74bb1299f92bbf890a1c412ba210bbef115b259b89b501611458.jpg
+2026-03-19 16:38:33.481 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：3161a58d2459d3bd06765cddbe05dd4c037093c2aa66c41f1964c8f77924dc0f.jpg
+2026-03-19 16:38:33.485 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：3848fdbce626b32de93029aba36a6282ee540069b9ef08543b1b185c30d6c91e.jpg
+2026-03-19 16:38:33.490 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：4e6c79160aa0edb9873bb4cd722f511d5b6850712754e457edc9716f2f509736.jpg
+2026-03-19 16:38:33.492 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：53af8eff82c97e9620326cf4dd4a58924107e96c14d8c43354e9a1daacea5a67.jpg
+2026-03-19 16:38:33.496 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：66ee4447cdd36e786369677a3a3aa8c36cedbfd2cdc10dde42ad9da98edefeab.jpg
+2026-03-19 16:38:33.499 | WARNING  | node_md_img.py      :step_2_scan_images:117  - 图片未在MD中引用，跳过处理：f175ba213c33e85d52b0670743708a6cb7f62a59d851a02333091acf51d415d1.jpg
+2026-03-19 16:38:33.503 | INFO     | node_md_img.py      :step_2_scan_images:122  - 图片扫描完成，共筛选出待处理图片：7 张
+2026-03-19 16:38:33.512 | INFO     | lm_utils.py         :get_llm_client :44   - [LLM客户端] 开始初始化新实例：模型=qwen3-vl-flash，JSON模式=False
+2026-03-19 16:38:33.577 | INFO     | file_import_service.py:get_task_progress:223  - [f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:38:34.726 | INFO     | lm_utils.py         :get_llm_client :71   - [LLM客户端] 实例初始化成功并缓存：模型=qwen3-vl-flash，JSON模式=False
+2026-03-19 16:38:35.574 | INFO     | file_import_service.py:get_task_progress:223  - [f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:38:35.611 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3\hak180产品安全手册\images\249fa4657bc1fd69ca12d3735f5dae5c4452840980633d314aa69411a3e31a44.jpg，摘要：禁止将手指伸入设备内部滚轮或齿轮区域，避免夹伤，确保操作安全。
+2026-03-19 16:38:36.640 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3\hak180产品安全手册\images\29245869565f74bb1299f92bbf890a1c412ba210bbef115b259b89b501611458.jpg，摘要：禁止将手指伸入设备进纸口，避免夹伤或触电，确保操作安全。
+2026-03-19 16:38:37.573 | INFO     | file_import_service.py:get_task_progress:223  - [f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:38:37.722 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3\hak180产品安全手册\images\3161a58d2459d3bd06765cddbe05dd4c037093c2aa66c41f1964c8f77924dc0f.jpg，摘要：高温警示标志，提示设备冷却后方可触碰内部零件，注意安全操作。
+2026-03-19 16:38:38.367 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3\hak180产品安全手册\images\3848fdbce626b32de93029aba36a6282ee540069b9ef08543b1b185c30d6c91e.jpg，摘要：禁止将设备置于桌面边缘，避免出纸盒打开导致跌落，确保平稳稳定放置以防损坏或伤害。
+2026-03-19 16:38:39.587 | INFO     | file_import_service.py:get_task_progress:223  - [f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:38:39.741 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3\hak180产品安全手册\images\4e6c79160aa0edb9873bb4cd722f511d5b6850712754e457edc9716f2f509736.jpg，摘要：警示图示：设备内部高温，禁止触摸灰色标记区域，需冷却后操作，温度达170°C（338°F）以防烫伤。
+2026-03-19 16:38:40.445 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3\hak180产品安全手册\images\53af8eff82c97e9620326cf4dd4a58924107e96c14d8c43354e9a1daacea5a67.jpg，摘要：正确搬运设备：双手托底，避免抓取进纸托板或出纸盒，防止跌落受伤。
+2026-03-19 16:38:41.219 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3\hak180产品安全手册\images\66ee4447cdd36e786369677a3a3aa8c36cedbfd2cdc10dde42ad9da98edefeab.jpg，摘要：Hak180设备内部结构示意图，展示手部操作部件，附电源安全警告说明。
+2026-03-19 16:38:41.222 | INFO     | node_md_img.py      :step_3_generate_summaries:212  - 图片摘要批量生成完成，共处理7张图片
+2026-03-19 16:38:41.240 | INFO     | node_md_img.py      :upload_to_minio:279  - 开始上传图片至MinIO：本地路径=C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3\hak180产品安全手册\images\249fa4657bc1fd69ca12d3735f5dae5c4452840980633d314aa69411a3e31a44.jpg，MinIO对象名=/upload-images/hak180产品安全手册/249fa4657bc1fd69ca12d3735f5dae5c4452840980633d314aa69411a3e31a44.jpg
+2026-03-19 16:38:41.262 | INFO     | node_md_img.py      :upload_to_minio:307  - 图片上传成功，访问URL：http://47.94.86.115:9000/knowledge-base-files/upload-images/hak180产品安全手册/249fa4657bc1fd69ca12d3735f5dae5c4452840980633d314aa69411a3e31a44.jpg
+2026-03-19 16:38:41.265 | INFO     | node_md_img.py      :upload_to_minio:279  - 开始上传图片至MinIO：本地路径=C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3\hak180产品安全手册\images\29245869565f74bb1299f92bbf890a1c412ba210bbef115b259b89b501611458.jpg，MinIO对象名=/upload-images/hak180产品安全手册/29245869565f74bb1299f92bbf890a1c412ba210bbef115b259b89b501611458.jpg
+2026-03-19 16:38:41.292 | INFO     | node_md_img.py      :upload_to_minio:307  - 图片上传成功，访问URL：http://47.94.86.115:9000/knowledge-base-files/upload-images/hak180产品安全手册/29245869565f74bb1299f92bbf890a1c412ba210bbef115b259b89b501611458.jpg
+2026-03-19 16:38:41.294 | INFO     | node_md_img.py      :upload_to_minio:279  - 开始上传图片至MinIO：本地路径=C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3\hak180产品安全手册\images\3161a58d2459d3bd06765cddbe05dd4c037093c2aa66c41f1964c8f77924dc0f.jpg，MinIO对象名=/upload-images/hak180产品安全手册/3161a58d2459d3bd06765cddbe05dd4c037093c2aa66c41f1964c8f77924dc0f.jpg
+2026-03-19 16:38:41.316 | INFO     | node_md_img.py      :upload_to_minio:307  - 图片上传成功，访问URL：http://47.94.86.115:9000/knowledge-base-files/upload-images/hak180产品安全手册/3161a58d2459d3bd06765cddbe05dd4c037093c2aa66c41f1964c8f77924dc0f.jpg
+2026-03-19 16:38:41.317 | INFO     | node_md_img.py      :upload_to_minio:279  - 开始上传图片至MinIO：本地路径=C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3\hak180产品安全手册\images\3848fdbce626b32de93029aba36a6282ee540069b9ef08543b1b185c30d6c91e.jpg，MinIO对象名=/upload-images/hak180产品安全手册/3848fdbce626b32de93029aba36a6282ee540069b9ef08543b1b185c30d6c91e.jpg
+2026-03-19 16:38:41.339 | INFO     | node_md_img.py      :upload_to_minio:307  - 图片上传成功，访问URL：http://47.94.86.115:9000/knowledge-base-files/upload-images/hak180产品安全手册/3848fdbce626b32de93029aba36a6282ee540069b9ef08543b1b185c30d6c91e.jpg
+2026-03-19 16:38:41.341 | INFO     | node_md_img.py      :upload_to_minio:279  - 开始上传图片至MinIO：本地路径=C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3\hak180产品安全手册\images\4e6c79160aa0edb9873bb4cd722f511d5b6850712754e457edc9716f2f509736.jpg，MinIO对象名=/upload-images/hak180产品安全手册/4e6c79160aa0edb9873bb4cd722f511d5b6850712754e457edc9716f2f509736.jpg
+2026-03-19 16:38:41.361 | INFO     | node_md_img.py      :upload_to_minio:307  - 图片上传成功，访问URL：http://47.94.86.115:9000/knowledge-base-files/upload-images/hak180产品安全手册/4e6c79160aa0edb9873bb4cd722f511d5b6850712754e457edc9716f2f509736.jpg
+2026-03-19 16:38:41.365 | INFO     | node_md_img.py      :upload_to_minio:279  - 开始上传图片至MinIO：本地路径=C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3\hak180产品安全手册\images\53af8eff82c97e9620326cf4dd4a58924107e96c14d8c43354e9a1daacea5a67.jpg，MinIO对象名=/upload-images/hak180产品安全手册/53af8eff82c97e9620326cf4dd4a58924107e96c14d8c43354e9a1daacea5a67.jpg
+2026-03-19 16:38:41.389 | INFO     | node_md_img.py      :upload_to_minio:307  - 图片上传成功，访问URL：http://47.94.86.115:9000/knowledge-base-files/upload-images/hak180产品安全手册/53af8eff82c97e9620326cf4dd4a58924107e96c14d8c43354e9a1daacea5a67.jpg
+2026-03-19 16:38:41.392 | INFO     | node_md_img.py      :upload_to_minio:279  - 开始上传图片至MinIO：本地路径=C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3\hak180产品安全手册\images\66ee4447cdd36e786369677a3a3aa8c36cedbfd2cdc10dde42ad9da98edefeab.jpg，MinIO对象名=/upload-images/hak180产品安全手册/66ee4447cdd36e786369677a3a3aa8c36cedbfd2cdc10dde42ad9da98edefeab.jpg
+2026-03-19 16:38:41.412 | INFO     | node_md_img.py      :upload_to_minio:307  - 图片上传成功，访问URL：http://47.94.86.115:9000/knowledge-base-files/upload-images/hak180产品安全手册/66ee4447cdd36e786369677a3a3aa8c36cedbfd2cdc10dde42ad9da98edefeab.jpg
+2026-03-19 16:38:41.416 | INFO     | node_md_img.py      :upload_images_batch:267  - 图片批量上传完成，成功上传7/7张图片
+2026-03-19 16:38:41.418 | INFO     | node_md_img.py      :merge_summary_and_url:325  - 图片摘要与URL合并完成，有效图片信息7条
+2026-03-19 16:38:41.422 | INFO     | node_md_img.py      :process_md_file:351  - MD文件图片引用替换完成，共替换7处图片引用
+2026-03-19 16:38:41.424 | INFO     | node_md_img.py      :step_5_backup_new_md_file:400  - 处理后MD文件已保存，新文件路径：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3\hak180产品安全手册\hak180产品安全手册_new.md
+2026-03-19 16:38:41.427 | INFO     | node_md_img.py      :node_md_img    :451  - MD图片处理完成，新文件已保存：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3\hak180产品安全手册\hak180产品安全手册_new.md
+2026-03-19 16:38:41.431 | INFO     | file_import_service.py:run_graph_task :97   - [f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3] LangGraph节点执行完成：node_md_img
+2026-03-19 16:38:41.432 | INFO     | node_document_split.py:node_document_split:348  - >>> 开始执行核心节点：【文档切分】node_document_split
+2026-03-19 16:38:41.435 | INFO     | node_document_split.py:step_1_get_inputs:45   - 步骤1：输入数据加载完成，文件标题：hak180产品安全手册，最大Chunk长度：2000
+2026-03-19 16:38:41.438 | INFO     | node_document_split.py:step_2_split_by_titles:107  - 步骤2：MD标题切分完成，识别到19个有效标题，原始文本共139行
+2026-03-19 16:38:41.441 | INFO     | node_document_split.py:step_4_refine_chunks:261  - 步骤4-1：超长章节切分完成，共生成19个初始子Chunk
+2026-03-19 16:38:41.444 | INFO     | node_document_split.py:step_4_refine_chunks:265  - 步骤4-2：过短章节合并完成，最终得到6个Chunk
+2026-03-19 16:38:41.447 | INFO     | node_document_split.py:step_5_print_stats:291  - -------------------------------------------------- 文档切分统计信息 --------------------------------------------------
+2026-03-19 16:38:41.450 | INFO     | node_document_split.py:step_5_print_stats:292  - MD原始文本总行数：139
+2026-03-19 16:38:41.452 | INFO     | node_document_split.py:step_5_print_stats:293  - 最终生成Chunk数量：6
+2026-03-19 16:38:41.456 | INFO     | node_document_split.py:step_5_print_stats:296  - 首个Chunk标题预览：# HAK 180 烫金机
+2026-03-19 16:38:41.460 | INFO     | node_document_split.py:step_5_print_stats:297  - --------------------------------------------------------------------------------------------------------------
+2026-03-19 16:38:41.463 | INFO     | node_document_split.py:step_6_backup  :332  - 步骤6：Chunk结果备份成功，备份文件路径：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3\chunks.json
+2026-03-19 16:38:41.467 | INFO     | node_document_split.py:node_document_split:390  - >>> 核心节点执行完成：【文档切分】node_document_split，已生成6个有效Chunk，结果已写入状态字典
+2026-03-19 16:38:41.470 | INFO     | file_import_service.py:run_graph_task :97   - [f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3] LangGraph节点执行完成：node_document_split
+2026-03-19 16:38:41.471 | INFO     | node_item_name_recognition.py:node_item_name_recognition:418  - >>> 开始执行核心节点：【商品名称识别】node_item_name_recognition
+2026-03-19 16:38:41.473 | INFO     | node_item_name_recognition.py:step_1_get_inputs:74   - 步骤1：输入校验完成，获取到6个有效文本切片
+2026-03-19 16:38:41.476 | INFO     | node_item_name_recognition.py:step_2_build_context:131  - 上下文总字符数即将超限（2500），已停止拼接后续切片
+2026-03-19 16:38:41.479 | INFO     | node_item_name_recognition.py:step_2_build_context:138  - 步骤2：上下文构建完成，最终长度2500字符
+2026-03-19 16:38:41.481 | INFO     | node_item_name_recognition.py:step_3_call_llm:160  - 开始执行步骤3：调用大模型识别商品名称
+2026-03-19 16:38:41.485 | INFO     | lm_utils.py         :get_llm_client :44   - [LLM客户端] 开始初始化新实例：模型=qwen-flash，JSON模式=False
+2026-03-19 16:38:41.489 | INFO     | lm_utils.py         :get_llm_client :71   - [LLM客户端] 实例初始化成功并缓存：模型=qwen-flash，JSON模式=False
+2026-03-19 16:38:41.577 | INFO     | file_import_service.py:get_task_progress:223  - [f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown', 'Markdown图片处理', '文档切分']
+2026-03-19 16:38:41.851 | INFO     | node_item_name_recognition.py:step_3_call_llm:198  - 步骤3：大模型识别商品名称成功，结果为：HAK180烫金机
+2026-03-19 16:38:41.853 | INFO     | node_item_name_recognition.py:step_4_update_chunks:228  - 步骤4：商品名称回填完成，共为6个切片添加item_name字段，值为：HAK180烫金机
+2026-03-19 16:38:41.857 | INFO     | node_item_name_recognition.py:step_5_generate_vectors:243  - 开始执行步骤5：为商品名称[HAK180烫金机]生成BGE-M3双向量
+2026-03-19 16:38:41.859 | INFO     | embedding_utils.py  :generate_embeddings:63   - 开始为1条文本生成混合向量嵌入
+2026-03-19 16:38:41.864 | INFO     | embedding_utils.py  :get_bge_m3_ef  :26   - 开始初始化BGE-M3模型
+2026-03-19 16:38:43.527 | SUCCESS  | embedding_utils.py  :get_bge_m3_ef  :44   - BGE-M3模型初始化成功，已开启原生L2归一化
+2026-03-19 16:38:43.574 | INFO     | file_import_service.py:get_task_progress:223  - [f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown', 'Markdown图片处理', '文档切分']
+2026-03-19 16:38:43.957 | SUCCESS  | embedding_utils.py  :generate_embeddings:91   - 1条文本向量生成完成，格式已适配工业级使用
+2026-03-19 16:38:43.960 | INFO     | node_item_name_recognition.py:step_5_generate_vectors:260  - 步骤5：BGE-M3稠密+稀疏向量生成成功
+2026-03-19 16:38:43.964 | INFO     | node_item_name_recognition.py:step_6_save_to_milvus:299  - 开始执行步骤6：将商品名称[HAK180烫金机]保存到Milvus集合[kb_item_names]
+2026-03-19 16:38:44.006 | INFO     | milvus_utils.py     :get_milvus_client:27   - Milvus客户端连接成功
+2026-03-19 16:38:44.019 | INFO     | node_item_name_recognition.py:step_6_save_to_milvus:310  - Milvus集合[kb_item_names]不存在，开始创建Schema和索引
+2026-03-19 16:38:45.571 | INFO     | file_import_service.py:get_task_progress:223  - [f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown', 'Markdown图片处理', '文档切分']
+2026-03-19 16:38:45.836 | INFO     | node_item_name_recognition.py:step_6_save_to_milvus:369  - Milvus集合[kb_item_names]创建成功，包含Schema和向量索引
+2026-03-19 16:38:46.123 | INFO     | node_item_name_recognition.py:step_6_save_to_milvus:380  - Milvus幂等性处理完成，已删除集合中[HAK180烫金机]的历史数据
+2026-03-19 16:38:46.184 | INFO     | node_item_name_recognition.py:step_6_save_to_milvus:401  - 步骤6：商品名称[HAK180烫金机]成功存入Milvus集合[kb_item_names]，数据：['file_title', 'item_name', 'dense_vector', 'sparse_vector']
+2026-03-19 16:38:46.187 | INFO     | node_item_name_recognition.py:node_item_name_recognition:457  - >>> 核心节点执行完成：【商品名称识别】node_item_name_recognition，识别结果：HAK180烫金机，已存入Milvus
+2026-03-19 16:38:46.189 | INFO     | file_import_service.py:run_graph_task :97   - [f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3] LangGraph节点执行完成：node_item_name_recognition
+2026-03-19 16:38:46.191 | INFO     | node_bge_embedding.py:node_bge_embedding:39   - >>> 开始执行LangGraph节点：node_bge_embedding
+2026-03-19 16:38:46.194 | INFO     | node_bge_embedding.py:node_bge_embedding:43   - --- BGE-M3 文本向量化处理启动 ---
+2026-03-19 16:38:46.196 | INFO     | node_bge_embedding.py:step_1_validate_input:86   - 向量化输入校验通过，待处理文本切片数量：6
+2026-03-19 16:38:46.200 | INFO     | node_bge_embedding.py:step_2_init_model:107  - BGE-M3模型实例初始化成功（单例模式）
+2026-03-19 16:38:46.202 | INFO     | embedding_utils.py  :generate_embeddings:63   - 开始为5条文本生成混合向量嵌入
+2026-03-19 16:38:47.574 | INFO     | file_import_service.py:get_task_progress:223  - [f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown', 'Markdown图片处理', '文档切分', '主体名称识别']
+2026-03-19 16:38:49.577 | INFO     | file_import_service.py:get_task_progress:223  - [f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown', 'Markdown图片处理', '文档切分', '主体名称识别']
+2026-03-19 16:38:50.481 | SUCCESS  | embedding_utils.py  :generate_embeddings:91   - 5条文本向量生成完成，格式已适配工业级使用
+2026-03-19 16:38:50.485 | INFO     | node_bge_embedding.py:step_3_generate_embeddings:176  - 第1-5条切片：双向量生成成功
+2026-03-19 16:38:50.487 | INFO     | embedding_utils.py  :generate_embeddings:63   - 开始为1条文本生成混合向量嵌入
+2026-03-19 16:38:51.426 | SUCCESS  | embedding_utils.py  :generate_embeddings:91   - 1条文本向量生成完成，格式已适配工业级使用
+2026-03-19 16:38:51.430 | INFO     | node_bge_embedding.py:step_3_generate_embeddings:176  - 第6-6条切片：双向量生成成功
+2026-03-19 16:38:51.434 | INFO     | node_bge_embedding.py:node_bge_embedding:57   - --- BGE-M3 向量化处理完成，共处理 6 条文本切片 ---
+2026-03-19 16:38:51.439 | INFO     | file_import_service.py:run_graph_task :97   - [f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3] LangGraph节点执行完成：node_bge_embedding
+2026-03-19 16:38:51.442 | INFO     | node_import_milvus.py:node_import_milvus:45   - >>> 开始执行LangGraph节点：node_import_milvus（Milvus切片数据入库）
+2026-03-19 16:38:51.445 | INFO     | node_import_milvus.py:node_import_milvus:48   - --- Milvus切片数据入库流程启动 ---
+2026-03-19 16:38:51.450 | INFO     | node_import_milvus.py:step_1_check_input:102  - Milvus入库校验通过，待入库切片数：6 | 向量维度：1024 | 商品名称：HAK180烫金机
+2026-03-19 16:38:51.453 | INFO     | node_import_milvus.py:step_2_prepare_collection:180  - 开始准备Milvus环境，目标集合：kb_chunks
+2026-03-19 16:38:51.463 | INFO     | node_import_milvus.py:step_2_prepare_collection:193  - Milvus集合kb_chunks不存在，开始自动创建Schema和索引
+2026-03-19 16:38:51.578 | INFO     | file_import_service.py:get_task_progress:223  - [f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown', 'Markdown图片处理', '文档切分', '主体名称识别', '向量生成']
+2026-03-19 16:38:53.221 | INFO     | node_import_milvus.py:create_collection:164  - Milvus集合创建成功：kb_chunks，向量维度：1024
+2026-03-19 16:38:53.231 | INFO     | node_import_milvus.py:_clear_chunks_by_item_name:262  - Milvus幂等性清理：开始删除集合kb_chunks中item_name=HAK180烫金机的旧数据
+2026-03-19 16:38:53.574 | INFO     | file_import_service.py:get_task_progress:223  - [f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown', 'Markdown图片处理', '文档切分', '主体名称识别', '向量生成']
+2026-03-19 16:38:54.059 | INFO     | node_import_milvus.py:_clear_chunks_by_item_name:274  - Milvus幂等性清理完成：成功删除item_name=HAK180烫金机的旧数据
+2026-03-19 16:38:54.062 | INFO     | node_import_milvus.py:step_4_insert_data:300  - Milvus数据插入：准备6条切片数据，开始批量插入
+2026-03-19 16:38:54.102 | INFO     | node_import_milvus.py:step_4_insert_data:304  - Milvus数据插入完成：成功插入6条数据，插入结果：{'insert_count': 6, 'ids': [464837176358006728, 464837176358006729, 464837176358006730, 464837176358006731, 464837176358006732, 464837176358006733]}
+2026-03-19 16:38:54.106 | INFO     | node_import_milvus.py:step_4_insert_data:309  - Milvus主键回填：开始将6个自增chunk_id回填到切片
+2026-03-19 16:38:54.107 | INFO     | node_import_milvus.py:step_4_insert_data:312  - Milvus主键回填完成：所有切片已绑定chunk_id
+2026-03-19 16:38:54.110 | INFO     | node_import_milvus.py:node_import_milvus:62   - --- Milvus切片数据入库流程完成 ---
+2026-03-19 16:38:54.113 | INFO     | file_import_service.py:run_graph_task :97   - [f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3] LangGraph节点执行完成：node_import_milvus
+2026-03-19 16:38:54.115 | INFO     | file_import_service.py:run_graph_task :103  - [f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3] LangGraph全流程执行完毕，任务完成
+2026-03-19 16:38:55.580 | INFO     | file_import_service.py:get_task_progress:223  - [f9cc9d68-2a21-4b24-881c-0e8d41dd7ad3] 任务状态查询，当前状态：completed，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown', 'Markdown图片处理', '文档切分', '主体名称识别', '向量生成', '导入向量库']
+2026-03-19 16:40:28.766 | INFO     | node_item_name_confirm.py:node_item_name_confirm:314  - >>> node_item_name_confirm: 开始处理
+2026-03-19 16:40:29.046 | INFO     | node_item_name_confirm.py:node_item_name_confirm:325  - Node: 获取到 0 条历史消息
+2026-03-19 16:40:29.060 | INFO     | node_item_name_confirm.py:step_3_extract_info:29   - Step 3: 开始提取信息 (LLM)
+2026-03-19 16:40:29.064 | INFO     | lm_utils.py         :get_llm_client :44   - [LLM客户端] 开始初始化新实例：模型=qwen-flash，JSON模式=True
+2026-03-19 16:40:30.005 | INFO     | lm_utils.py         :get_llm_client :71   - [LLM客户端] 实例初始化成功并缓存：模型=qwen-flash，JSON模式=True
+2026-03-19 16:40:30.009 | INFO     | node_item_name_confirm.py:step_3_extract_info:39   - Step 3: 历史上下文构建完成，长度: 0 字符
+2026-03-19 16:40:30.015 | INFO     | node_item_name_confirm.py:step_3_extract_info:56   - Step 3: 正在调用 LLM 进行提取...
+2026-03-19 16:40:30.934 | INFO     | node_item_name_confirm.py:step_3_extract_info:73   - Step 3: 提取结果解析成功 - 商品名: ['HAK 180 烫金机'], 重写问题: HAK 180 烫金机不遵守说明和警告可能导致人员死亡或严重受伤吗？
+2026-03-19 16:40:30.939 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:85   - Step 4: 开始向量化检索，目标商品: ['HAK 180 烫金机']
+2026-03-19 16:40:30.988 | INFO     | milvus_utils.py     :get_milvus_client:27   - Milvus客户端连接成功
+2026-03-19 16:40:30.994 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:99   - Step 4: 正在生成 Embedding (Dense + Sparse)...
+2026-03-19 16:40:30.997 | INFO     | embedding_utils.py  :generate_embeddings:63   - 开始为1条文本生成混合向量嵌入
+2026-03-19 16:40:31.001 | INFO     | embedding_utils.py  :get_bge_m3_ef  :26   - 开始初始化BGE-M3模型
+2026-03-19 16:40:32.964 | SUCCESS  | embedding_utils.py  :get_bge_m3_ef  :44   - BGE-M3模型初始化成功，已开启原生L2归一化
+2026-03-19 16:40:33.616 | SUCCESS  | embedding_utils.py  :generate_embeddings:91   - 1条文本向量生成完成，格式已适配工业级使用
+2026-03-19 16:40:33.621 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:101  - Step 4: 向量生成完成，开始 Milvus 搜索 (Collection: kb_item_names)
+2026-03-19 16:40:33.731 | INFO     | milvus_utils.py     :hybrid_search  :192  - Milvus混合搜索完成，集合[kb_item_names]共检索到1条结果
+2026-03-19 16:40:33.735 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:145  - Step 4: 商品 'HAK 180 烫金机' 检索完成，找到 1 个匹配项
+2026-03-19 16:40:33.739 | INFO     | node_item_name_confirm.py:step_5_align_item_names:161  - Step 5: 开始对齐商品名 (Score Analysis)
+2026-03-19 16:40:33.744 | INFO     | node_item_name_confirm.py:step_5_align_item_names:179  - Step 5: 'HAK 180 烫金机' Top匹配: HAK180烫金机(0.910)
+2026-03-19 16:40:33.747 | INFO     | node_item_name_confirm.py:step_5_align_item_names:189  - Step 5: 规则A命中 (Single High) -> 确认: HAK180烫金机
+2026-03-19 16:40:33.752 | INFO     | node_item_name_confirm.py:step_5_align_item_names:224  - Step 5: 对齐结果: {'confirmed_item_names': ['HAK180烫金机'], 'options': []}
+2026-03-19 16:40:33.755 | INFO     | node_item_name_confirm.py:step_6_check_confirmation:232  - Step 6: 检查确认状态并更新 State
+2026-03-19 16:40:33.760 | INFO     | node_item_name_confirm.py:step_6_check_confirmation:243  - Step 6: [分支A] 存在确认商品名: ['HAK180烫金机']
+2026-03-19 16:40:33.763 | INFO     | node_item_name_confirm.py:step_7_write_history:283  - Step 7: 写入会话历史
+2026-03-19 16:40:33.766 | INFO     | node_item_name_confirm.py:step_7_write_history:297  - Step 7: 更新用户消息 (ID: 69bbb67d010efa74b0e9cb81)
+2026-03-19 16:40:33.780 | INFO     | node_item_name_confirm.py:node_item_name_confirm:360  - Node: 处理结束, Final State Item Names: ['HAK180烫金机']
+2026-03-19 16:40:33.786 | INFO     | node_search_embedding.py:node_search_embedding:28   - ---search_milvus 开始处理---
+2026-03-19 16:40:33.788 | INFO     | node_search_embedding_hyde.py:node_search_embedding_hyde:156  - ---HyDE (假设文档检索) 节点开始处理---
+2026-03-19 16:40:33.788 | INFO     | node_web_search_mcp.py:node_web_search_mcp:77   - ---node_web_search_mcp 开始处理---
+2026-03-19 16:40:33.793 | INFO     | node_search_embedding.py:node_search_embedding:35   - 核心入参提取: query='HAK 180 烫金机不遵守说明和警告可能导致人员死亡或严重受伤吗？', item_names=['HAK180烫金机']
+2026-03-19 16:40:33.795 | INFO     | node_web_search_mcp.py:node_web_search_mcp:94   - 启动异步 MCP 调用，Query: HAK 180 烫金机不遵守说明和警告可能导致人员死亡或严重受伤吗？
+2026-03-19 16:40:33.794 | INFO     | node_search_embedding_hyde.py:node_search_embedding_hyde:171  - HyDE检索入参: query='HAK 180 烫金机不遵守说明和警告可能导致人员死亡或严重受伤吗？', item_names=['HAK180烫金机']
+2026-03-19 16:40:33.800 | INFO     | node_search_embedding.py:node_search_embedding:38   - 开始为“HAK 180 烫金机不遵守说明和警告可能导致人员死亡或严重受伤吗？”文本获取嵌入值...
+2026-03-19 16:40:33.802 | INFO     | node_search_embedding_hyde.py:node_search_embedding_hyde:176  - Step 1: 开始生成假设性文档 (HyDE Doc)...
+2026-03-19 16:40:33.806 | INFO     | embedding_utils.py  :generate_embeddings:63   - 开始为1条文本生成混合向量嵌入
+2026-03-19 16:40:33.807 | INFO     | node_search_embedding_hyde.py:step_1_create_hyde_doc:27   - Step 1: 开始生成假设性文档 (HyDE), Query: HAK 180 烫金机不遵守说明和警告可能导致人员死亡或严重受伤吗？
+2026-03-19 16:40:33.802 | INFO     | node_web_search_mcp.py:mcp_call       :44   - [MCP] 正在连接百炼 WebSearch 服务: https://dashscope.aliyuncs.com/api/v1/mcps/WebSearch/sse
+2026-03-19 16:40:33.814 | INFO     | lm_utils.py         :get_llm_client :44   - [LLM客户端] 开始初始化新实例：模型=qwen-flash，JSON模式=False
+2026-03-19 16:40:33.822 | INFO     | lm_utils.py         :get_llm_client :71   - [LLM客户端] 实例初始化成功并缓存：模型=qwen-flash，JSON模式=False
+2026-03-19 16:40:34.107 | SUCCESS  | embedding_utils.py  :generate_embeddings:91   - 1条文本向量生成完成，格式已适配工业级使用
+2026-03-19 16:40:34.110 | INFO     | node_search_embedding.py:node_search_embedding:51   - 正在连接到 Milvus 并准备集合 'kb_chunks'...
+2026-03-19 16:40:34.113 | INFO     | node_search_embedding.py:node_search_embedding:66   - 创建搜索请求过滤表达式: item_name in ["HAK180烫金机"]
+2026-03-19 16:40:34.116 | INFO     | node_search_embedding.py:node_search_embedding:77   - 开始执行 Milvus 混合检索...
+2026-03-19 16:40:34.140 | INFO     | milvus_utils.py     :hybrid_search  :192  - Milvus混合搜索完成，集合[kb_chunks]共检索到5条结果
+2026-03-19 16:40:34.143 | INFO     | node_search_embedding.py:node_search_embedding:91   - 节点 search_embedding 处理成功，检索到 5 条相关片段
+2026-03-19 16:40:35.728 | INFO     | node_search_embedding_hyde.py:step_1_create_hyde_doc:40   - Step 1: 假设文档生成完成, 长度: 224 字符
+2026-03-19 16:40:35.730 | INFO     | node_search_embedding_hyde.py:node_search_embedding_hyde:178  - Step 1: 假设文档生成成功 (长度: 224)
+2026-03-19 16:40:35.733 | INFO     | node_search_embedding_hyde.py:node_search_embedding_hyde:187  - Step 2: 基于假设文档执行 Milvus 混合检索...
+2026-03-19 16:40:35.735 | INFO     | node_search_embedding_hyde.py:step_2_search_embedding_hyde:80   - Step 2: 拼接 Query + HyDE Doc, 总长度: 259
+2026-03-19 16:40:35.737 | INFO     | node_search_embedding_hyde.py:step_2_search_embedding_hyde:83   - Step 2: 正在生成混合向量 (Embedding)...
+2026-03-19 16:40:35.740 | INFO     | embedding_utils.py  :generate_embeddings:63   - 开始为1条文本生成混合向量嵌入
+2026-03-19 16:40:36.217 | SUCCESS  | embedding_utils.py  :generate_embeddings:91   - 1条文本向量生成完成，格式已适配工业级使用
+2026-03-19 16:40:36.221 | INFO     | node_search_embedding_hyde.py:step_2_search_embedding_hyde:92   - Step 2: 准备在集合 'kb_chunks' 中执行混合检索
+2026-03-19 16:40:36.224 | INFO     | node_search_embedding_hyde.py:step_2_search_embedding_hyde:100  - Step 2: 应用过滤条件: item_name in ["HAK180烫金机"]
+2026-03-19 16:40:36.228 | INFO     | node_search_embedding_hyde.py:step_2_search_embedding_hyde:119  - Step 2: 执行 Hybrid Search, Weights=(0.8, 0.2), TopK=5
+2026-03-19 16:40:36.266 | INFO     | milvus_utils.py     :hybrid_search  :192  - Milvus混合搜索完成，集合[kb_chunks]共检索到5条结果
+2026-03-19 16:40:36.270 | INFO     | node_search_embedding_hyde.py:step_2_search_embedding_hyde:131  - Step 2: 检索完成, 找到 5 个匹配切片
+2026-03-19 16:40:36.273 | INFO     | node_search_embedding_hyde.py:node_search_embedding_hyde:196  - Step 2: 检索完成，召回 5 条相关切片
+2026-03-19 16:40:36.276 | INFO     | node_search_embedding_hyde.py:node_search_embedding_hyde:215  - ---HyDE 节点处理结束---
+2026-03-19 16:40:50.916 | INFO     | node_web_search_mcp.py:mcp_call       :48   - [MCP] 连接成功，正在调用工具 'bailian_web_search' 查询: HAK 180 烫金机不遵守说明和警告可能导致人员死亡或严重受伤吗？
+2026-03-19 16:40:53.125 | INFO     | node_web_search_mcp.py:mcp_call       :56   - [MCP] 工具调用完成，已获取返回结果
+2026-03-19 16:40:53.136 | INFO     | node_web_search_mcp.py:node_web_search_mcp:128  - MCP 返回原始页面数量: 2
+2026-03-19 16:40:53.139 | INFO     | node_web_search_mcp.py:node_web_search_mcp:150  - 结构化搜索结果数量: 2
+2026-03-19 16:40:53.142 | INFO     | node_web_search_mcp.py:node_web_search_mcp:160  - ---node_web_search_mcp 处理结束---
+2026-03-19 16:40:53.148 | INFO     | node_rrf.py         :node_rrf       :152  - ---RRF (倒数排名融合) 开始处理---
+2026-03-19 16:40:53.153 | INFO     | node_rrf.py         :node_rrf       :162  - RRF 输入统计: Embedding源=5条, HyDE源=5条
+2026-03-19 16:40:53.158 | INFO     | node_rerank.py      :node_rerank    :251  - ---Rerank (重排序) 节点开始处理---
+2026-03-19 16:40:53.161 | INFO     | node_rerank.py      :step_1_merge_docs:46   - Step 1: 开始合并文档 - 本地RRF源: 5条, 联网Web源: 2条
+2026-03-19 16:40:53.169 | INFO     | node_rerank.py      :step_1_merge_docs:108  - Step 1: 文档合并完成，共输出 7 条标准化文档
+2026-03-19 16:40:53.173 | INFO     | node_rerank.py      :step_2_rerank_docs:125  - Step 2: 开始重排序 (Rerank), 待排序文档数: 7
+2026-03-19 16:40:54.743 | INFO     | node_rerank.py      :step_2_rerank_docs:155  - Step 2: 正在计算相关性得分...
+2026-03-19 16:41:02.088 | INFO     | node_rerank.py      :step_3_topk    :229  - Step 3: 触发断崖截断 @ index=0 (Score 7.4528 -> 5.0289, Gap=2.4239)
+2026-03-19 16:41:02.092 | INFO     | node_rerank.py      :step_3_topk    :236  - Step 3: 截断完成，保留前 1 条文档 (TopK=1)
+2026-03-19 16:41:02.097 | INFO     | node_rerank.py      :node_rerank    :261  - Rerank 节点处理结束, 最终输出 1 条文档
+2026-03-19 16:41:02.101 | INFO     | node_answer_output.py:node_answer_output:301  - ---node_answer_output (答案生成) 节点开始处理---
+2026-03-19 16:41:02.105 | INFO     | node_answer_output.py:step_2_construct_prompt:134  - 组装后的提示词为：你是一个智能助手，请根据参考内容回答用户的问题。
+要求：
+1 尽量基于【参考内容】和【用户问题】 作答，不要编造不存在的事实。
+2 如果用户的问题需要通过图片来辅助说明（例如：外观、结构、接线、示意图等）,图片只能来自于本地切片文本中的图片，请在答案最后追加一个独立的图片区块，格式严格如下：
+【图片】
+<图片URL1>
+<图片URL2>
+（每行一个URL；如果没有合适图片则不要输出【图片】区块）
+
+【参考内容】
+[1] [local] [chunk_id=464837176358006731] [score=7.4528] [title=HAK180烫金机]
+# 注意
+
+
+# 不遵守说明和警告可能导致人员中度或严重受伤。遵守这些指引以避免人员受伤。
+
+
+# 设备
+
+•	将本设备放置在平整、水平且稳定的表面上（如桌面），避免震动和冲击。  
+•	将本设备放置在通风良好的环境中。  
+•	为了防止人员受伤，请谨慎操作，避免将手指放置在图中所示的区域中。
+
+![禁止将手指伸入设备内部滚轮或齿轮区域，避免夹伤，确保操作安全。](http://47.94.86.115:9000/knowledge-base-files/upload-images/hak180产品安全手册/249fa4657bc1fd69ca12d3735f5dae5c4452840980633d314aa69411a3e31a44.jpg)
+
+![禁止将手指伸入设备进纸口，避免夹伤或触电，确保操作安全。](http://47.94.86.115:9000/knowledge-base-files/upload-images/hak180产品安全手册/29245869565f74bb1299f92bbf890a1c412ba210bbef115b259b89b501611458.jpg)
+
+【历史对话】
+无历史对话
+
+【相关商品/实体】
+HAK180烫金机
+
+【用户问题】
+HAK 180 烫金机不遵守说明和警告可能导致人员死亡或严重受伤吗？
+
+请回答：
+2026-03-19 16:41:02.108 | INFO     | node_answer_output.py:step_3_generate_response:144  - ---Step 3: 开始生成回答 (LLM Generation)---
+2026-03-19 16:41:02.113 | INFO     | node_answer_output.py:step_3_generate_response:157  - 模式: 流式输出 (Streaming), Session: sess-qa45djgjad7mkw95sm7
+2026-03-19 16:41:04.710 | INFO     | node_answer_output.py:step_3_generate_response:168  - 流式输出完成，总长度: 409
+2026-03-19 16:41:04.714 | INFO     | node_answer_output.py:_extract_images_from_docs:224  - 开始提取图片，待处理文档数: 1
+2026-03-19 16:41:04.717 | INFO     | node_answer_output.py:_extract_images_from_docs:254  - 图片提取完成，共找到 2 张唯一图片: ['http://47.94.86.115:9000/knowledge-base-files/upload-images/hak180产品安全手册/249fa4657bc1fd69ca12d3735f5dae5c4452840980633d314aa69411a3e31a44.jpg', 'http://47.94.86.115:9000/knowledge-base-files/upload-images/hak180产品安全手册/29245869565f74bb1299f92bbf890a1c412ba210bbef115b259b89b501611458.jpg']
+2026-03-19 16:41:04.720 | INFO     | node_answer_output.py:node_answer_output:320  - ---写入MongoDB历史记录---
+2026-03-19 16:41:04.733 | INFO     | node_answer_output.py:node_answer_output:326  - ---发送 final 事件---图片为：['http://47.94.86.115:9000/knowledge-base-files/upload-images/hak180产品安全手册/249fa4657bc1fd69ca12d3735f5dae5c4452840980633d314aa69411a3e31a44.jpg', 'http://47.94.86.115:9000/knowledge-base-files/upload-images/hak180产品安全手册/29245869565f74bb1299f92bbf890a1c412ba210bbef115b259b89b501611458.jpg']
+2026-03-19 16:41:04.736 | INFO     | node_answer_output.py:node_answer_output:338  - ---node_answer_output 节点处理结束---
+2026-03-19 16:44:12.968 | INFO     | minio_utils.py      :<module>       :29   - MinIO存储桶[knowledge-base-files]已存在，无需重复创建
+2026-03-19 16:44:13.110 | INFO     | minio_utils.py      :<module>       :42   - MinIO存储桶[knowledge-base-files]已配置公网只读策略，支持匿名URL访问
+2026-03-19 16:44:21.975 | INFO     | file_import_service.py:<module>       :234  - File Import Service 服务启动中...
+2026-03-19 16:45:15.242 | INFO     | file_import_service.py:upload_files   :140  - [7dff03bc-3389-4e05-950a-fb1c1027784c] 开始处理上传文件，文件名：hak180产品安全手册.pdf，文件类型：application/pdf
+2026-03-19 16:45:15.559 | INFO     | file_import_service.py:upload_files   :154  - [7dff03bc-3389-4e05-950a-fb1c1027784c] 文件已保存至本地，路径：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\7dff03bc-3389-4e05-950a-fb1c1027784c\hak180产品安全手册.pdf
+2026-03-19 16:45:15.674 | INFO     | file_import_service.py:upload_files   :178  - [7dff03bc-3389-4e05-950a-fb1c1027784c] 文件已成功上传至MinIO，桶名：knowledge-base-files，对象名：pdf_files/20260319/hak180产品安全手册.pdf
+2026-03-19 16:45:15.681 | INFO     | file_import_service.py:upload_files   :188  - [7dff03bc-3389-4e05-950a-fb1c1027784c] 已将LangGraph全流程加入后台任务，任务已启动
+2026-03-19 16:45:15.687 | INFO     | file_import_service.py:upload_files   :191  - 多文件上传处理完毕，共处理1个文件，生成TaskID列表：['7dff03bc-3389-4e05-950a-fb1c1027784c']
+2026-03-19 16:45:15.703 | INFO     | file_import_service.py:run_graph_task :85   - [7dff03bc-3389-4e05-950a-fb1c1027784c] 开始执行LangGraph全流程，本地文件路径：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\7dff03bc-3389-4e05-950a-fb1c1027784c\hak180产品安全手册.pdf
+2026-03-19 16:45:15.714 | INFO     | node_entry.py       :node_entry     :37   - 【node_entry】文件类型校验通过：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\7dff03bc-3389-4e05-950a-fb1c1027784c\hak180产品安全手册.pdf → PDF格式，开启PDF解析流程
+2026-03-19 16:45:15.719 | INFO     | node_entry.py       :node_entry     :50   - 【node_entry】文件业务标识提取完成：file_title = hak180产品安全手册
+2026-03-19 16:45:15.723 | INFO     | file_import_service.py:run_graph_task :97   - [7dff03bc-3389-4e05-950a-fb1c1027784c] LangGraph节点执行完成：node_entry
+2026-03-19 16:45:15.725 | INFO     | node_pdf_to_md.py   :step_2_upload_and_poll:68   - [配置校验] MinerU基础配置加载成功，开始处理文件：hak180产品安全手册.pdf
+2026-03-19 16:45:16.313 | INFO     | node_pdf_to_md.py   :step_2_upload_and_poll:96   - [获取上传链接] 成功，batch_id：9f8a1e02-4bd2-4694-9cca-56b2027d1d39，上传链接已生成
+2026-03-19 16:45:16.318 | INFO     | node_pdf_to_md.py   :step_2_upload_and_poll:99   - [文件上传] 开始读取PDF文件：hak180产品安全手册.pdf
+2026-03-19 16:45:17.133 | INFO     | node_pdf_to_md.py   :step_2_upload_and_poll:118  - [文件上传] 成功，文件hak180产品安全手册.pdf已存入云存储
+2026-03-19 16:45:17.138 | INFO     | node_pdf_to_md.py   :step_2_upload_and_poll:130  - [任务轮询] 开始监控任务状态，batch_id：9f8a1e02-4bd2-4694-9cca-56b2027d1d39，最大超时：600s
+2026-03-19 16:45:17.709 | INFO     | file_import_service.py:get_task_progress:223  - [7dff03bc-3389-4e05-950a-fb1c1027784c] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件']
+2026-03-19 16:45:19.707 | INFO     | file_import_service.py:get_task_progress:223  - [7dff03bc-3389-4e05-950a-fb1c1027784c] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件']
+2026-03-19 16:45:21.129 | INFO     | node_pdf_to_md.py   :step_2_upload_and_poll:171  - [任务轮询] 解析任务完成！总耗时：3s，batch_id：9f8a1e02-4bd2-4694-9cca-56b2027d1d39
+2026-03-19 16:45:21.133 | INFO     | node_pdf_to_md.py   :step_2_upload_and_poll:175  - [任务轮询] 结果ZIP包下载链接：https://cdn-mineru.openxlab.org.cn/pdf/2026-03-16/96c85ba6-435d-414b-b30c-cabb5c57b129.zip...
+2026-03-19 16:45:21.139 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:197  - ===== 开始处理[hak180产品安全手册]的MinerU解析结果 =====
+2026-03-19 16:45:21.142 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:200  - [步骤1/4] 开始下载ZIP包，链接：https://cdn-mineru.openxlab.org.cn/pdf/2026-03-16/96c85ba6-435d-414b-b30c-cabb5c57b129.zip...
+2026-03-19 16:45:21.716 | INFO     | file_import_service.py:get_task_progress:223  - [7dff03bc-3389-4e05-950a-fb1c1027784c] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件']
+2026-03-19 16:45:21.929 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:209  - [步骤1/4] ZIP包下载成功，保存路径：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\7dff03bc-3389-4e05-950a-fb1c1027784c\hak180产品安全手册_result.zip
+2026-03-19 16:45:21.932 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:212  - [步骤2/4] 开始解压ZIP包...
+2026-03-19 16:45:21.962 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:230  - [步骤2/4] ZIP包解压完成，解压目录：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\7dff03bc-3389-4e05-950a-fb1c1027784c\hak180产品安全手册
+2026-03-19 16:45:21.965 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:233  - [步骤3/4] 开始查找解压目录中的MD文件...
+2026-03-19 16:45:21.969 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:237  - [步骤3/4] 共找到1个MD文件，按优先级匹配目标文件
+2026-03-19 16:45:21.971 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:252  - [步骤4/4] 匹配到优先级2目标：MinerU默认文件 full.md
+2026-03-19 16:45:21.976 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:261  - [步骤4/4] 开始重命名MD文件，统一为PDF同名：hak180产品安全手册.md
+2026-03-19 16:45:21.979 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:268  - [步骤4/4] MD文件重命名成功：hak180产品安全手册.md
+2026-03-19 16:45:21.982 | INFO     | node_pdf_to_md.py   :step_3_download_and_extract:274  - ===== [hak180产品安全手册]解析结果处理完成，最终MD文件路径：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\7dff03bc-3389-4e05-950a-fb1c1027784c\hak180产品安全手册\hak180产品安全手册.md =====
+2026-03-19 16:45:21.987 | INFO     | node_pdf_to_md.py   :node_pdf_to_md :307  - 【node_pdf_to_md】MD文件生成成功，路径：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\7dff03bc-3389-4e05-950a-fb1c1027784c\hak180产品安全手册\hak180产品安全手册.md
+2026-03-19 16:45:21.996 | INFO     | node_pdf_to_md.py   :node_pdf_to_md :317  - 【node_pdf_to_md】节点执行完成，更新后工作流状态键：['task_id', 'is_md_read_enabled', 'is_pdf_read_enabled', 'is_normal_split_enabled', 'is_silicon_flow_api_enabled', 'is_advanced_split_enabled', 'is_vllm_enabled', 'local_dir', 'local_file_path', 'file_title', 'pdf_path', 'md_path', 'split_path', 'embeddings_path', 'md_content', 'chunks', 'item_name', 'embeddings_content']
+2026-03-19 16:45:21.999 | INFO     | file_import_service.py:run_graph_task :97   - [7dff03bc-3389-4e05-950a-fb1c1027784c] LangGraph节点执行完成：node_pdf_to_md
+2026-03-19 16:45:22.000 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：249fa4657bc1fd69ca12d3735f5dae5c4452840980633d314aa69411a3e31a44.jpg
+2026-03-19 16:45:22.004 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：29245869565f74bb1299f92bbf890a1c412ba210bbef115b259b89b501611458.jpg
+2026-03-19 16:45:22.007 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：3161a58d2459d3bd06765cddbe05dd4c037093c2aa66c41f1964c8f77924dc0f.jpg
+2026-03-19 16:45:22.011 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：3848fdbce626b32de93029aba36a6282ee540069b9ef08543b1b185c30d6c91e.jpg
+2026-03-19 16:45:22.015 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：4e6c79160aa0edb9873bb4cd722f511d5b6850712754e457edc9716f2f509736.jpg
+2026-03-19 16:45:22.017 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：53af8eff82c97e9620326cf4dd4a58924107e96c14d8c43354e9a1daacea5a67.jpg
+2026-03-19 16:45:22.020 | INFO     | node_md_img.py      :step_2_scan_images:121  - 图片加入待处理列表：66ee4447cdd36e786369677a3a3aa8c36cedbfd2cdc10dde42ad9da98edefeab.jpg
+2026-03-19 16:45:22.024 | WARNING  | node_md_img.py      :step_2_scan_images:117  - 图片未在MD中引用，跳过处理：f175ba213c33e85d52b0670743708a6cb7f62a59d851a02333091acf51d415d1.jpg
+2026-03-19 16:45:22.027 | INFO     | node_md_img.py      :step_2_scan_images:122  - 图片扫描完成，共筛选出待处理图片：7 张
+2026-03-19 16:45:22.036 | INFO     | lm_utils.py         :get_llm_client :44   - [LLM客户端] 开始初始化新实例：模型=qwen3-vl-flash，JSON模式=False
+2026-03-19 16:45:23.254 | INFO     | lm_utils.py         :get_llm_client :71   - [LLM客户端] 实例初始化成功并缓存：模型=qwen3-vl-flash，JSON模式=False
+2026-03-19 16:45:23.710 | INFO     | file_import_service.py:get_task_progress:223  - [7dff03bc-3389-4e05-950a-fb1c1027784c] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:45:24.036 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\7dff03bc-3389-4e05-950a-fb1c1027784c\hak180产品安全手册\images\249fa4657bc1fd69ca12d3735f5dae5c4452840980633d314aa69411a3e31a44.jpg，摘要：禁止将手指伸入设备内部齿轮或滚轴区域，防止夹伤或设备损坏。
+2026-03-19 16:45:25.211 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\7dff03bc-3389-4e05-950a-fb1c1027784c\hak180产品安全手册\images\29245869565f74bb1299f92bbf890a1c412ba210bbef115b259b89b501611458.jpg，摘要：禁止将手指伸入设备进纸口，避免夹伤或触电，确保操作安全。
+2026-03-19 16:45:25.706 | INFO     | file_import_service.py:get_task_progress:223  - [7dff03bc-3389-4e05-950a-fb1c1027784c] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:45:25.723 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\7dff03bc-3389-4e05-950a-fb1c1027784c\hak180产品安全手册\images\3161a58d2459d3bd06765cddbe05dd4c037093c2aa66c41f1964c8f77924dc0f.jpg，摘要：高温警示标志，提示设备冷却后方可触碰内部零件，确保操作安全。
+2026-03-19 16:45:26.370 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\7dff03bc-3389-4e05-950a-fb1c1027784c\hak180产品安全手册\images\3848fdbce626b32de93029aba36a6282ee540069b9ef08543b1b185c30d6c91e.jpg，摘要：禁止将设备置于桌面边缘，避免出纸盒打开导致跌落，确保平稳稳定放置以防损坏或伤害。
+2026-03-19 16:45:27.049 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\7dff03bc-3389-4e05-950a-fb1c1027784c\hak180产品安全手册\images\4e6c79160aa0edb9873bb4cd722f511d5b6850712754e457edc9716f2f509736.jpg，摘要：警示图示：设备内部高温，禁止触摸灰色标记区域，需冷却后操作，温度达170°C（338°F）以防烫伤。
+2026-03-19 16:45:27.707 | INFO     | file_import_service.py:get_task_progress:223  - [7dff03bc-3389-4e05-950a-fb1c1027784c] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown']
+2026-03-19 16:45:27.955 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\7dff03bc-3389-4e05-950a-fb1c1027784c\hak180产品安全手册\images\53af8eff82c97e9620326cf4dd4a58924107e96c14d8c43354e9a1daacea5a67.jpg，摘要：正确搬运设备：双手托底，避免抓取进纸托板或出纸盒，防止跌落受伤。
+2026-03-19 16:45:28.657 | INFO     | node_md_img.py      :summarize_image:184  - 图片摘要生成成功：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\7dff03bc-3389-4e05-950a-fb1c1027784c\hak180产品安全手册\images\66ee4447cdd36e786369677a3a3aa8c36cedbfd2cdc10dde42ad9da98edefeab.jpg，摘要：hak180设备电源线安全使用说明，强调仅限AC 220-240V供电，禁用直流或逆变器，防止触电火灾。
+2026-03-19 16:45:28.661 | INFO     | node_md_img.py      :step_3_generate_summaries:212  - 图片摘要批量生成完成，共处理7张图片
+2026-03-19 16:45:28.674 | INFO     | node_md_img.py      :upload_to_minio:279  - 开始上传图片至MinIO：本地路径=C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\7dff03bc-3389-4e05-950a-fb1c1027784c\hak180产品安全手册\images\249fa4657bc1fd69ca12d3735f5dae5c4452840980633d314aa69411a3e31a44.jpg，MinIO对象名=/upload-images/hak180产品安全手册/249fa4657bc1fd69ca12d3735f5dae5c4452840980633d314aa69411a3e31a44.jpg
+2026-03-19 16:45:28.695 | INFO     | node_md_img.py      :upload_to_minio:307  - 图片上传成功，访问URL：http://47.94.86.115:9000/knowledge-base-files/upload-images/hak180产品安全手册/249fa4657bc1fd69ca12d3735f5dae5c4452840980633d314aa69411a3e31a44.jpg
+2026-03-19 16:45:28.697 | INFO     | node_md_img.py      :upload_to_minio:279  - 开始上传图片至MinIO：本地路径=C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\7dff03bc-3389-4e05-950a-fb1c1027784c\hak180产品安全手册\images\29245869565f74bb1299f92bbf890a1c412ba210bbef115b259b89b501611458.jpg，MinIO对象名=/upload-images/hak180产品安全手册/29245869565f74bb1299f92bbf890a1c412ba210bbef115b259b89b501611458.jpg
+2026-03-19 16:45:28.717 | INFO     | node_md_img.py      :upload_to_minio:307  - 图片上传成功，访问URL：http://47.94.86.115:9000/knowledge-base-files/upload-images/hak180产品安全手册/29245869565f74bb1299f92bbf890a1c412ba210bbef115b259b89b501611458.jpg
+2026-03-19 16:45:28.722 | INFO     | node_md_img.py      :upload_to_minio:279  - 开始上传图片至MinIO：本地路径=C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\7dff03bc-3389-4e05-950a-fb1c1027784c\hak180产品安全手册\images\3161a58d2459d3bd06765cddbe05dd4c037093c2aa66c41f1964c8f77924dc0f.jpg，MinIO对象名=/upload-images/hak180产品安全手册/3161a58d2459d3bd06765cddbe05dd4c037093c2aa66c41f1964c8f77924dc0f.jpg
+2026-03-19 16:45:28.744 | INFO     | node_md_img.py      :upload_to_minio:307  - 图片上传成功，访问URL：http://47.94.86.115:9000/knowledge-base-files/upload-images/hak180产品安全手册/3161a58d2459d3bd06765cddbe05dd4c037093c2aa66c41f1964c8f77924dc0f.jpg
+2026-03-19 16:45:28.747 | INFO     | node_md_img.py      :upload_to_minio:279  - 开始上传图片至MinIO：本地路径=C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\7dff03bc-3389-4e05-950a-fb1c1027784c\hak180产品安全手册\images\3848fdbce626b32de93029aba36a6282ee540069b9ef08543b1b185c30d6c91e.jpg，MinIO对象名=/upload-images/hak180产品安全手册/3848fdbce626b32de93029aba36a6282ee540069b9ef08543b1b185c30d6c91e.jpg
+2026-03-19 16:45:28.768 | INFO     | node_md_img.py      :upload_to_minio:307  - 图片上传成功，访问URL：http://47.94.86.115:9000/knowledge-base-files/upload-images/hak180产品安全手册/3848fdbce626b32de93029aba36a6282ee540069b9ef08543b1b185c30d6c91e.jpg
+2026-03-19 16:45:28.771 | INFO     | node_md_img.py      :upload_to_minio:279  - 开始上传图片至MinIO：本地路径=C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\7dff03bc-3389-4e05-950a-fb1c1027784c\hak180产品安全手册\images\4e6c79160aa0edb9873bb4cd722f511d5b6850712754e457edc9716f2f509736.jpg，MinIO对象名=/upload-images/hak180产品安全手册/4e6c79160aa0edb9873bb4cd722f511d5b6850712754e457edc9716f2f509736.jpg
+2026-03-19 16:45:28.793 | INFO     | node_md_img.py      :upload_to_minio:307  - 图片上传成功，访问URL：http://47.94.86.115:9000/knowledge-base-files/upload-images/hak180产品安全手册/4e6c79160aa0edb9873bb4cd722f511d5b6850712754e457edc9716f2f509736.jpg
+2026-03-19 16:45:28.797 | INFO     | node_md_img.py      :upload_to_minio:279  - 开始上传图片至MinIO：本地路径=C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\7dff03bc-3389-4e05-950a-fb1c1027784c\hak180产品安全手册\images\53af8eff82c97e9620326cf4dd4a58924107e96c14d8c43354e9a1daacea5a67.jpg，MinIO对象名=/upload-images/hak180产品安全手册/53af8eff82c97e9620326cf4dd4a58924107e96c14d8c43354e9a1daacea5a67.jpg
+2026-03-19 16:45:28.819 | INFO     | node_md_img.py      :upload_to_minio:307  - 图片上传成功，访问URL：http://47.94.86.115:9000/knowledge-base-files/upload-images/hak180产品安全手册/53af8eff82c97e9620326cf4dd4a58924107e96c14d8c43354e9a1daacea5a67.jpg
+2026-03-19 16:45:28.823 | INFO     | node_md_img.py      :upload_to_minio:279  - 开始上传图片至MinIO：本地路径=C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\7dff03bc-3389-4e05-950a-fb1c1027784c\hak180产品安全手册\images\66ee4447cdd36e786369677a3a3aa8c36cedbfd2cdc10dde42ad9da98edefeab.jpg，MinIO对象名=/upload-images/hak180产品安全手册/66ee4447cdd36e786369677a3a3aa8c36cedbfd2cdc10dde42ad9da98edefeab.jpg
+2026-03-19 16:45:28.847 | INFO     | node_md_img.py      :upload_to_minio:307  - 图片上传成功，访问URL：http://47.94.86.115:9000/knowledge-base-files/upload-images/hak180产品安全手册/66ee4447cdd36e786369677a3a3aa8c36cedbfd2cdc10dde42ad9da98edefeab.jpg
+2026-03-19 16:45:28.850 | INFO     | node_md_img.py      :upload_images_batch:267  - 图片批量上传完成，成功上传7/7张图片
+2026-03-19 16:45:28.853 | INFO     | node_md_img.py      :merge_summary_and_url:325  - 图片摘要与URL合并完成，有效图片信息7条
+2026-03-19 16:45:28.858 | INFO     | node_md_img.py      :process_md_file:351  - MD文件图片引用替换完成，共替换7处图片引用
+2026-03-19 16:45:28.862 | INFO     | node_md_img.py      :step_5_backup_new_md_file:400  - 处理后MD文件已保存，新文件路径：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\7dff03bc-3389-4e05-950a-fb1c1027784c\hak180产品安全手册\hak180产品安全手册_new.md
+2026-03-19 16:45:28.864 | INFO     | node_md_img.py      :node_md_img    :451  - MD图片处理完成，新文件已保存：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\7dff03bc-3389-4e05-950a-fb1c1027784c\hak180产品安全手册\hak180产品安全手册_new.md
+2026-03-19 16:45:28.869 | INFO     | file_import_service.py:run_graph_task :97   - [7dff03bc-3389-4e05-950a-fb1c1027784c] LangGraph节点执行完成：node_md_img
+2026-03-19 16:45:28.871 | INFO     | node_document_split.py:node_document_split:348  - >>> 开始执行核心节点：【文档切分】node_document_split
+2026-03-19 16:45:28.873 | INFO     | node_document_split.py:step_1_get_inputs:45   - 步骤1：输入数据加载完成，文件标题：hak180产品安全手册，最大Chunk长度：2000
+2026-03-19 16:45:28.877 | INFO     | node_document_split.py:step_2_split_by_titles:107  - 步骤2：MD标题切分完成，识别到19个有效标题，原始文本共139行
+2026-03-19 16:45:28.882 | INFO     | node_document_split.py:step_4_refine_chunks:261  - 步骤4-1：超长章节切分完成，共生成19个初始子Chunk
+2026-03-19 16:45:28.885 | INFO     | node_document_split.py:step_4_refine_chunks:265  - 步骤4-2：过短章节合并完成，最终得到6个Chunk
+2026-03-19 16:45:28.889 | INFO     | node_document_split.py:step_5_print_stats:291  - -------------------------------------------------- 文档切分统计信息 --------------------------------------------------
+2026-03-19 16:45:28.893 | INFO     | node_document_split.py:step_5_print_stats:292  - MD原始文本总行数：139
+2026-03-19 16:45:28.897 | INFO     | node_document_split.py:step_5_print_stats:293  - 最终生成Chunk数量：6
+2026-03-19 16:45:28.900 | INFO     | node_document_split.py:step_5_print_stats:296  - 首个Chunk标题预览：# HAK 180 烫金机
+2026-03-19 16:45:28.903 | INFO     | node_document_split.py:step_5_print_stats:297  - --------------------------------------------------------------------------------------------------------------
+2026-03-19 16:45:28.908 | INFO     | node_document_split.py:step_6_backup  :332  - 步骤6：Chunk结果备份成功，备份文件路径：C:\Users\admin\PycharmProjects\PythonProject16\output\20260319\7dff03bc-3389-4e05-950a-fb1c1027784c\chunks.json
+2026-03-19 16:45:28.911 | INFO     | node_document_split.py:node_document_split:390  - >>> 核心节点执行完成：【文档切分】node_document_split，已生成6个有效Chunk，结果已写入状态字典
+2026-03-19 16:45:28.916 | INFO     | file_import_service.py:run_graph_task :97   - [7dff03bc-3389-4e05-950a-fb1c1027784c] LangGraph节点执行完成：node_document_split
+2026-03-19 16:45:28.918 | INFO     | node_item_name_recognition.py:node_item_name_recognition:422  - >>> 开始执行核心节点：【商品名称识别】node_item_name_recognition
+2026-03-19 16:45:28.922 | INFO     | node_item_name_recognition.py:step_1_get_inputs:74   - 步骤1：输入校验完成，获取到6个有效文本切片
+2026-03-19 16:45:28.926 | INFO     | node_item_name_recognition.py:step_2_build_context:131  - 上下文总字符数即将超限（2500），已停止拼接后续切片
+2026-03-19 16:45:28.929 | INFO     | node_item_name_recognition.py:step_2_build_context:138  - 步骤2：上下文构建完成，最终长度2500字符
+2026-03-19 16:45:28.933 | INFO     | node_item_name_recognition.py:step_3_call_llm:160  - 开始执行步骤3：调用大模型识别商品名称
+2026-03-19 16:45:28.937 | INFO     | lm_utils.py         :get_llm_client :44   - [LLM客户端] 开始初始化新实例：模型=qwen-flash，JSON模式=False
+2026-03-19 16:45:28.943 | INFO     | lm_utils.py         :get_llm_client :71   - [LLM客户端] 实例初始化成功并缓存：模型=qwen-flash，JSON模式=False
+2026-03-19 16:45:29.413 | INFO     | node_item_name_recognition.py:step_3_call_llm:198  - 步骤3：大模型识别商品名称成功，结果为：HAK180烫金机
+2026-03-19 16:45:29.418 | INFO     | node_item_name_recognition.py:step_4_update_chunks:228  - 步骤4：商品名称回填完成，共为6个切片添加item_name字段，值为：HAK180烫金机
+2026-03-19 16:45:29.422 | INFO     | node_item_name_recognition.py:step_5_generate_vectors:243  - 开始执行步骤5：为商品名称[HAK180烫金机]生成BGE-M3双向量
+2026-03-19 16:45:29.425 | INFO     | embedding_utils.py  :generate_embeddings:63   - 开始为1条文本生成混合向量嵌入
+2026-03-19 16:45:29.429 | INFO     | embedding_utils.py  :get_bge_m3_ef  :26   - 开始初始化BGE-M3模型
+2026-03-19 16:45:30.445 | INFO     | file_import_service.py:get_task_progress:223  - [7dff03bc-3389-4e05-950a-fb1c1027784c] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown', 'Markdown图片处理', '文档切分']
+2026-03-19 16:45:31.168 | SUCCESS  | embedding_utils.py  :get_bge_m3_ef  :44   - BGE-M3模型初始化成功，已开启原生L2归一化
+2026-03-19 16:45:31.602 | SUCCESS  | embedding_utils.py  :generate_embeddings:91   - 1条文本向量生成完成，格式已适配工业级使用
+2026-03-19 16:45:31.606 | INFO     | node_item_name_recognition.py:step_5_generate_vectors:260  - 步骤5：BGE-M3稠密+稀疏向量生成成功
+2026-03-19 16:45:31.610 | INFO     | node_item_name_recognition.py:step_6_save_to_milvus:299  - 开始执行步骤6：将商品名称[HAK180烫金机]保存到Milvus集合[kb_item_names]
+2026-03-19 16:45:31.661 | INFO     | milvus_utils.py     :get_milvus_client:27   - Milvus客户端连接成功
+2026-03-19 16:45:31.675 | INFO     | node_item_name_recognition.py:step_6_save_to_milvus:310  - Milvus集合[kb_item_names]不存在，开始创建Schema和索引
+2026-03-19 16:45:31.715 | INFO     | file_import_service.py:get_task_progress:223  - [7dff03bc-3389-4e05-950a-fb1c1027784c] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown', 'Markdown图片处理', '文档切分']
+2026-03-19 16:45:33.221 | INFO     | node_item_name_recognition.py:step_6_save_to_milvus:373  - Milvus集合[kb_item_names]创建成功，包含Schema和向量索引
+2026-03-19 16:45:33.529 | INFO     | node_item_name_recognition.py:step_6_save_to_milvus:384  - Milvus幂等性处理完成，已删除集合中[HAK180烫金机]的历史数据
+2026-03-19 16:45:33.575 | INFO     | node_item_name_recognition.py:step_6_save_to_milvus:405  - 步骤6：商品名称[HAK180烫金机]成功存入Milvus集合[kb_item_names]，数据：['file_title', 'item_name', 'dense_vector', 'sparse_vector']
+2026-03-19 16:45:33.581 | INFO     | node_item_name_recognition.py:node_item_name_recognition:461  - >>> 核心节点执行完成：【商品名称识别】node_item_name_recognition，识别结果：HAK180烫金机，已存入Milvus
+2026-03-19 16:45:33.585 | INFO     | file_import_service.py:run_graph_task :97   - [7dff03bc-3389-4e05-950a-fb1c1027784c] LangGraph节点执行完成：node_item_name_recognition
+2026-03-19 16:45:33.587 | INFO     | node_bge_embedding.py:node_bge_embedding:39   - >>> 开始执行LangGraph节点：node_bge_embedding
+2026-03-19 16:45:33.593 | INFO     | node_bge_embedding.py:node_bge_embedding:43   - --- BGE-M3 文本向量化处理启动 ---
+2026-03-19 16:45:33.595 | INFO     | node_bge_embedding.py:step_1_validate_input:86   - 向量化输入校验通过，待处理文本切片数量：6
+2026-03-19 16:45:33.599 | INFO     | node_bge_embedding.py:step_2_init_model:107  - BGE-M3模型实例初始化成功（单例模式）
+2026-03-19 16:45:33.602 | INFO     | embedding_utils.py  :generate_embeddings:63   - 开始为5条文本生成混合向量嵌入
+2026-03-19 16:45:33.705 | INFO     | file_import_service.py:get_task_progress:223  - [7dff03bc-3389-4e05-950a-fb1c1027784c] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown', 'Markdown图片处理', '文档切分', '主体名称识别']
+2026-03-19 16:45:35.707 | INFO     | file_import_service.py:get_task_progress:223  - [7dff03bc-3389-4e05-950a-fb1c1027784c] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown', 'Markdown图片处理', '文档切分', '主体名称识别']
+2026-03-19 16:45:37.714 | INFO     | file_import_service.py:get_task_progress:223  - [7dff03bc-3389-4e05-950a-fb1c1027784c] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown', 'Markdown图片处理', '文档切分', '主体名称识别']
+2026-03-19 16:45:38.208 | SUCCESS  | embedding_utils.py  :generate_embeddings:91   - 5条文本向量生成完成，格式已适配工业级使用
+2026-03-19 16:45:38.212 | INFO     | node_bge_embedding.py:step_3_generate_embeddings:176  - 第1-5条切片：双向量生成成功
+2026-03-19 16:45:38.215 | INFO     | embedding_utils.py  :generate_embeddings:63   - 开始为1条文本生成混合向量嵌入
+2026-03-19 16:45:39.233 | SUCCESS  | embedding_utils.py  :generate_embeddings:91   - 1条文本向量生成完成，格式已适配工业级使用
+2026-03-19 16:45:39.237 | INFO     | node_bge_embedding.py:step_3_generate_embeddings:176  - 第6-6条切片：双向量生成成功
+2026-03-19 16:45:39.240 | INFO     | node_bge_embedding.py:node_bge_embedding:57   - --- BGE-M3 向量化处理完成，共处理 6 条文本切片 ---
+2026-03-19 16:45:39.244 | INFO     | file_import_service.py:run_graph_task :97   - [7dff03bc-3389-4e05-950a-fb1c1027784c] LangGraph节点执行完成：node_bge_embedding
+2026-03-19 16:45:39.246 | INFO     | node_import_milvus.py:node_import_milvus:45   - >>> 开始执行LangGraph节点：node_import_milvus（Milvus切片数据入库）
+2026-03-19 16:45:39.250 | INFO     | node_import_milvus.py:node_import_milvus:48   - --- Milvus切片数据入库流程启动 ---
+2026-03-19 16:45:39.253 | INFO     | node_import_milvus.py:step_1_check_input:102  - Milvus入库校验通过，待入库切片数：6 | 向量维度：1024 | 商品名称：HAK180烫金机
+2026-03-19 16:45:39.256 | INFO     | node_import_milvus.py:step_2_prepare_collection:184  - 开始准备Milvus环境，目标集合：kb_chunks
+2026-03-19 16:45:39.270 | INFO     | node_import_milvus.py:step_2_prepare_collection:197  - Milvus集合kb_chunks不存在，开始自动创建Schema和索引
+2026-03-19 16:45:39.719 | INFO     | file_import_service.py:get_task_progress:223  - [7dff03bc-3389-4e05-950a-fb1c1027784c] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown', 'Markdown图片处理', '文档切分', '主体名称识别', '向量生成']
+2026-03-19 16:45:41.243 | INFO     | node_import_milvus.py:create_collection:168  - Milvus集合创建成功：kb_chunks，向量维度：1024
+2026-03-19 16:45:41.255 | INFO     | node_import_milvus.py:_clear_chunks_by_item_name:266  - Milvus幂等性清理：开始删除集合kb_chunks中item_name=HAK180烫金机的旧数据
+2026-03-19 16:45:41.708 | INFO     | file_import_service.py:get_task_progress:223  - [7dff03bc-3389-4e05-950a-fb1c1027784c] 任务状态查询，当前状态：processing，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown', 'Markdown图片处理', '文档切分', '主体名称识别', '向量生成']
+2026-03-19 16:45:42.061 | INFO     | node_import_milvus.py:_clear_chunks_by_item_name:278  - Milvus幂等性清理完成：成功删除item_name=HAK180烫金机的旧数据
+2026-03-19 16:45:42.064 | INFO     | node_import_milvus.py:step_4_insert_data:304  - Milvus数据插入：准备6条切片数据，开始批量插入
+2026-03-19 16:45:42.104 | INFO     | node_import_milvus.py:step_4_insert_data:308  - Milvus数据插入完成：成功插入6条数据，插入结果：{'insert_count': 6, 'ids': [464837176358006739, 464837176358006740, 464837176358006741, 464837176358006742, 464837176358006743, 464837176358006744]}
+2026-03-19 16:45:42.107 | INFO     | node_import_milvus.py:step_4_insert_data:313  - Milvus主键回填：开始将6个自增chunk_id回填到切片
+2026-03-19 16:45:42.110 | INFO     | node_import_milvus.py:step_4_insert_data:316  - Milvus主键回填完成：所有切片已绑定chunk_id
+2026-03-19 16:45:42.113 | INFO     | node_import_milvus.py:node_import_milvus:62   - --- Milvus切片数据入库流程完成 ---
+2026-03-19 16:45:42.116 | INFO     | file_import_service.py:run_graph_task :97   - [7dff03bc-3389-4e05-950a-fb1c1027784c] LangGraph节点执行完成：node_import_milvus
+2026-03-19 16:45:42.118 | INFO     | file_import_service.py:run_graph_task :103  - [7dff03bc-3389-4e05-950a-fb1c1027784c] LangGraph全流程执行完毕，任务完成
+2026-03-19 16:45:43.708 | INFO     | file_import_service.py:get_task_progress:223  - [7dff03bc-3389-4e05-950a-fb1c1027784c] 任务状态查询，当前状态：completed，已完成节点：['开始上传文件', '检查文件', 'PDF转Markdown', 'Markdown图片处理', '文档切分', '主体名称识别', '向量生成', '导入向量库']
+2026-03-19 16:46:11.293 | INFO     | node_item_name_confirm.py:node_item_name_confirm:314  - >>> node_item_name_confirm: 开始处理
+2026-03-19 16:46:11.311 | INFO     | node_item_name_confirm.py:node_item_name_confirm:325  - Node: 获取到 2 条历史消息
+2026-03-19 16:46:11.325 | INFO     | node_item_name_confirm.py:step_3_extract_info:29   - Step 3: 开始提取信息 (LLM)
+2026-03-19 16:46:11.328 | INFO     | node_item_name_confirm.py:step_3_extract_info:39   - Step 3: 历史上下文构建完成，长度: 462 字符
+2026-03-19 16:46:11.334 | INFO     | node_item_name_confirm.py:step_3_extract_info:56   - Step 3: 正在调用 LLM 进行提取...
+2026-03-19 16:46:12.289 | INFO     | node_item_name_confirm.py:step_3_extract_info:73   - Step 3: 提取结果解析成功 - 商品名: ['HAK 180 烫金机'], 重写问题: 不遵守HAK 180 烫金机的说明和警告可能导致人员死亡或严重受伤么！
+2026-03-19 16:46:12.292 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:85   - Step 4: 开始向量化检索，目标商品: ['HAK 180 烫金机']
+2026-03-19 16:46:12.295 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:99   - Step 4: 正在生成 Embedding (Dense + Sparse)...
+2026-03-19 16:46:12.300 | INFO     | embedding_utils.py  :generate_embeddings:63   - 开始为1条文本生成混合向量嵌入
+2026-03-19 16:46:12.724 | SUCCESS  | embedding_utils.py  :generate_embeddings:91   - 1条文本向量生成完成，格式已适配工业级使用
+2026-03-19 16:46:12.728 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:101  - Step 4: 向量生成完成，开始 Milvus 搜索 (Collection: kb_item_names)
+2026-03-19 16:46:12.773 | INFO     | milvus_utils.py     :hybrid_search  :192  - Milvus混合搜索完成，集合[kb_item_names]共检索到1条结果
+2026-03-19 16:46:12.777 | INFO     | node_item_name_confirm.py:step_4_vectorize_and_query:145  - Step 4: 商品 'HAK 180 烫金机' 检索完成，找到 1 个匹配项
+2026-03-19 16:46:12.781 | INFO     | node_item_name_confirm.py:step_5_align_item_names:161  - Step 5: 开始对齐商品名 (Score Analysis)
+2026-03-19 16:46:12.784 | INFO     | node_item_name_confirm.py:step_5_align_item_names:179  - Step 5: 'HAK 180 烫金机' Top匹配: HAK180烫金机(0.910)
+2026-03-19 16:46:12.788 | INFO     | node_item_name_confirm.py:step_5_align_item_names:189  - Step 5: 规则A命中 (Single High) -> 确认: HAK180烫金机
+2026-03-19 16:46:12.792 | INFO     | node_item_name_confirm.py:step_5_align_item_names:224  - Step 5: 对齐结果: {'confirmed_item_names': ['HAK180烫金机'], 'options': []}
+2026-03-19 16:46:12.796 | INFO     | node_item_name_confirm.py:step_6_check_confirmation:232  - Step 6: 检查确认状态并更新 State
+2026-03-19 16:46:12.800 | INFO     | node_item_name_confirm.py:step_6_check_confirmation:243  - Step 6: [分支A] 存在确认商品名: ['HAK180烫金机']
+2026-03-19 16:46:12.803 | INFO     | node_item_name_confirm.py:step_7_write_history:283  - Step 7: 写入会话历史
+2026-03-19 16:46:12.806 | INFO     | node_item_name_confirm.py:step_7_write_history:297  - Step 7: 更新用户消息 (ID: 69bbb7d3010efa74b0e9cb83)
+2026-03-19 16:46:12.820 | INFO     | node_item_name_confirm.py:node_item_name_confirm:360  - Node: 处理结束, Final State Item Names: ['HAK180烫金机']
+2026-03-19 16:46:12.826 | INFO     | node_search_embedding.py:node_search_embedding:28   - ---search_milvus 开始处理---
+2026-03-19 16:46:12.827 | INFO     | node_search_embedding_hyde.py:node_search_embedding_hyde:156  - ---HyDE (假设文档检索) 节点开始处理---
+2026-03-19 16:46:12.828 | INFO     | node_web_search_mcp.py:node_web_search_mcp:77   - ---node_web_search_mcp 开始处理---
+2026-03-19 16:46:12.832 | INFO     | node_search_embedding.py:node_search_embedding:35   - 核心入参提取: query='不遵守HAK 180 烫金机的说明和警告可能导致人员死亡或严重受伤么！', item_names=['HAK180烫金机']
+2026-03-19 16:46:12.834 | INFO     | node_search_embedding_hyde.py:node_search_embedding_hyde:171  - HyDE检索入参: query='不遵守HAK 180 烫金机的说明和警告可能导致人员死亡或严重受伤么！', item_names=['HAK180烫金机']
+2026-03-19 16:46:12.835 | INFO     | node_web_search_mcp.py:node_web_search_mcp:94   - 启动异步 MCP 调用，Query: 不遵守HAK 180 烫金机的说明和警告可能导致人员死亡或严重受伤么！
+2026-03-19 16:46:12.838 | INFO     | node_search_embedding.py:node_search_embedding:38   - 开始为“不遵守HAK 180 烫金机的说明和警告可能导致人员死亡或严重受伤么！”文本获取嵌入值...
+2026-03-19 16:46:12.839 | INFO     | node_search_embedding_hyde.py:node_search_embedding_hyde:176  - Step 1: 开始生成假设性文档 (HyDE Doc)...
+2026-03-19 16:46:12.846 | INFO     | embedding_utils.py  :generate_embeddings:63   - 开始为1条文本生成混合向量嵌入
+2026-03-19 16:46:12.847 | INFO     | node_search_embedding_hyde.py:step_1_create_hyde_doc:27   - Step 1: 开始生成假设性文档 (HyDE), Query: 不遵守HAK 180 烫金机的说明和警告可能导致人员死亡或严重受伤么！
+2026-03-19 16:46:12.844 | INFO     | node_web_search_mcp.py:mcp_call       :44   - [MCP] 正在连接百炼 WebSearch 服务: https://dashscope.aliyuncs.com/api/v1/mcps/WebSearch/sse
+2026-03-19 16:46:13.121 | SUCCESS  | embedding_utils.py  :generate_embeddings:91   - 1条文本向量生成完成，格式已适配工业级使用
+2026-03-19 16:46:13.125 | INFO     | node_search_embedding.py:node_search_embedding:51   - 正在连接到 Milvus 并准备集合 'kb_chunks'...
+2026-03-19 16:46:13.129 | INFO     | node_search_embedding.py:node_search_embedding:66   - 创建搜索请求过滤表达式: item_name in ["HAK180烫金机"]
+2026-03-19 16:46:13.132 | INFO     | node_search_embedding.py:node_search_embedding:77   - 开始执行 Milvus 混合检索...
+2026-03-19 16:46:13.162 | INFO     | milvus_utils.py     :hybrid_search  :192  - Milvus混合搜索完成，集合[kb_chunks]共检索到5条结果
+2026-03-19 16:46:13.164 | INFO     | node_search_embedding.py:node_search_embedding:91   - 节点 search_embedding 处理成功，检索到 5 条相关片段
+2026-03-19 16:46:14.573 | INFO     | node_search_embedding_hyde.py:step_1_create_hyde_doc:40   - Step 1: 假设文档生成完成, 长度: 254 字符
+2026-03-19 16:46:14.577 | INFO     | node_search_embedding_hyde.py:node_search_embedding_hyde:178  - Step 1: 假设文档生成成功 (长度: 254)
+2026-03-19 16:46:14.579 | INFO     | node_search_embedding_hyde.py:node_search_embedding_hyde:187  - Step 2: 基于假设文档执行 Milvus 混合检索...
+2026-03-19 16:46:14.582 | INFO     | node_search_embedding_hyde.py:step_2_search_embedding_hyde:80   - Step 2: 拼接 Query + HyDE Doc, 总长度: 290
+2026-03-19 16:46:14.584 | INFO     | node_search_embedding_hyde.py:step_2_search_embedding_hyde:83   - Step 2: 正在生成混合向量 (Embedding)...
+2026-03-19 16:46:14.588 | INFO     | embedding_utils.py  :generate_embeddings:63   - 开始为1条文本生成混合向量嵌入
+2026-03-19 16:46:15.098 | SUCCESS  | embedding_utils.py  :generate_embeddings:91   - 1条文本向量生成完成，格式已适配工业级使用
+2026-03-19 16:46:15.102 | INFO     | node_search_embedding_hyde.py:step_2_search_embedding_hyde:92   - Step 2: 准备在集合 'kb_chunks' 中执行混合检索
+2026-03-19 16:46:15.105 | INFO     | node_search_embedding_hyde.py:step_2_search_embedding_hyde:100  - Step 2: 应用过滤条件: item_name in ["HAK180烫金机"]
+2026-03-19 16:46:15.109 | INFO     | node_search_embedding_hyde.py:step_2_search_embedding_hyde:119  - Step 2: 执行 Hybrid Search, Weights=(0.8, 0.2), TopK=5
+2026-03-19 16:46:15.154 | INFO     | milvus_utils.py     :hybrid_search  :192  - Milvus混合搜索完成，集合[kb_chunks]共检索到5条结果
+2026-03-19 16:46:15.158 | INFO     | node_search_embedding_hyde.py:step_2_search_embedding_hyde:131  - Step 2: 检索完成, 找到 5 个匹配切片
+2026-03-19 16:46:15.162 | INFO     | node_search_embedding_hyde.py:node_search_embedding_hyde:196  - Step 2: 检索完成，召回 5 条相关切片
+2026-03-19 16:46:15.165 | INFO     | node_search_embedding_hyde.py:node_search_embedding_hyde:215  - ---HyDE 节点处理结束---
+2026-03-19 16:46:29.516 | INFO     | node_web_search_mcp.py:mcp_call       :48   - [MCP] 连接成功，正在调用工具 'bailian_web_search' 查询: 不遵守HAK 180 烫金机的说明和警告可能导致人员死亡或严重受伤么！
+2026-03-19 16:46:32.196 | INFO     | node_web_search_mcp.py:mcp_call       :56   - [MCP] 工具调用完成，已获取返回结果
+2026-03-19 16:46:32.204 | INFO     | node_web_search_mcp.py:node_web_search_mcp:128  - MCP 返回原始页面数量: 2
+2026-03-19 16:46:32.207 | INFO     | node_web_search_mcp.py:node_web_search_mcp:150  - 结构化搜索结果数量: 2
+2026-03-19 16:46:32.210 | INFO     | node_web_search_mcp.py:node_web_search_mcp:160  - ---node_web_search_mcp 处理结束---
+2026-03-19 16:46:32.213 | INFO     | node_rrf.py         :node_rrf       :152  - ---RRF (倒数排名融合) 开始处理---
+2026-03-19 16:46:32.218 | INFO     | node_rrf.py         :node_rrf       :162  - RRF 输入统计: Embedding源=5条, HyDE源=5条
+2026-03-19 16:46:32.222 | INFO     | node_rerank.py      :node_rerank    :251  - ---Rerank (重排序) 节点开始处理---
+2026-03-19 16:46:32.226 | INFO     | node_rerank.py      :step_1_merge_docs:46   - Step 1: 开始合并文档 - 本地RRF源: 6条, 联网Web源: 2条
+2026-03-19 16:46:32.231 | INFO     | node_rerank.py      :step_1_merge_docs:108  - Step 1: 文档合并完成，共输出 8 条标准化文档
+2026-03-19 16:46:32.236 | INFO     | node_rerank.py      :step_2_rerank_docs:125  - Step 2: 开始重排序 (Rerank), 待排序文档数: 8
+2026-03-19 16:46:32.240 | INFO     | node_rerank.py      :step_2_rerank_docs:155  - Step 2: 正在计算相关性得分...
+2026-03-19 16:46:39.859 | INFO     | node_rerank.py      :step_3_topk    :229  - Step 3: 触发断崖截断 @ index=0 (Score 7.2213 -> 5.0414, Gap=2.1799)
+2026-03-19 16:46:39.863 | INFO     | node_rerank.py      :step_3_topk    :236  - Step 3: 截断完成，保留前 1 条文档 (TopK=1)
+2026-03-19 16:46:39.867 | INFO     | node_rerank.py      :node_rerank    :261  - Rerank 节点处理结束, 最终输出 1 条文档
+2026-03-19 16:46:39.871 | INFO     | node_answer_output.py:node_answer_output:301  - ---node_answer_output (答案生成) 节点开始处理---
+2026-03-19 16:46:39.876 | INFO     | node_answer_output.py:step_2_construct_prompt:134  - 组装后的提示词为：你是一个智能助手，请根据参考内容回答用户的问题。
+要求：
+1 尽量基于【参考内容】和【用户问题】 作答，不要编造不存在的事实。
+2 如果用户的问题需要通过图片来辅助说明（例如：外观、结构、接线、示意图等）,图片只能来自于本地切片文本中的图片，请在答案最后追加一个独立的图片区块，格式严格如下：
+【图片】
+<图片URL1>
+<图片URL2>
+（每行一个URL；如果没有合适图片则不要输出【图片】区块）
+
+【参考内容】
+[1] [local] [chunk_id=464837176358006742] [score=7.2213] [title=HAK180烫金机]
+# 注意
+
+
+# 不遵守说明和警告可能导致人员中度或严重受伤。遵守这些指引以避免人员受伤。
+
+
+# 设备
+
+•	将本设备放置在平整、水平且稳定的表面上（如桌面），避免震动和冲击。  
+•	将本设备放置在通风良好的环境中。  
+•	为了防止人员受伤，请谨慎操作，避免将手指放置在图中所示的区域中。
+
+![禁止将手指伸入设备内部齿轮或滚轴区域，防止夹伤或设备损坏。](http://47.94.86.115:9000/knowledge-base-files/upload-images/hak180产品安全手册/249fa4657bc1fd69ca12d3735f5dae5c4452840980633d314aa69411a3e31a44.jpg)
+
+![禁止将手指伸入设备进纸口，避免夹伤或触电，确保操作安全。](http://47.94.86.115:9000/knowledge-base-files/upload-images/hak180产品安全手册/29245869565f74bb1299f92bbf890a1c412ba210bbef115b259b89b501611458.jpg)
+
+【历史对话】
+用户: HAK 180 烫金机不遵守说明和警告可能导致人员死亡或严重受伤么！
+助手: 是的，不遵守HAK180烫金机的说明和警告可能导致人员死亡或严重受伤。设备安全手册中明确指出，未遵循操作指引可能引发严重事故，例如因接触设备内部滚轮、齿轮或进纸口导致夹伤、触电等危险情况。务必严格遵守安全提示以确保操作人员的安全。
+
+【图片】
+<http://47.94.86.115:9000/knowledge-base-files/upload-images/hak180产品安全手册/249fa4657bc1fd69ca12d3735f5dae5c4452840980633d314aa69411a3e31a44.jpg>
+<http://47.94.86.115:9000/knowledge-base-files/upload-images/hak180产品安全手册/29245869565f74bb1299f92bbf890a1c412ba210bbef115b259b89b501611458.jpg>
+
+
+【相关商品/实体】
+HAK180烫金机
+
+【用户问题】
+不遵守HAK 180 烫金机的说明和警告可能导致人员死亡或严重受伤么！
+
+请回答：
+2026-03-19 16:46:39.881 | INFO     | node_answer_output.py:step_3_generate_response:144  - ---Step 3: 开始生成回答 (LLM Generation)---
+2026-03-19 16:46:39.885 | INFO     | node_answer_output.py:step_3_generate_response:157  - 模式: 流式输出 (Streaming), Session: sess-qa45djgjad7mkw95sm7
+2026-03-19 16:46:41.865 | INFO     | node_answer_output.py:step_3_generate_response:168  - 流式输出完成，总长度: 409
+2026-03-19 16:46:41.871 | INFO     | node_answer_output.py:_extract_images_from_docs:224  - 开始提取图片，待处理文档数: 1
+2026-03-19 16:46:41.875 | INFO     | node_answer_output.py:_extract_images_from_docs:254  - 图片提取完成，共找到 2 张唯一图片: ['http://47.94.86.115:9000/knowledge-base-files/upload-images/hak180产品安全手册/249fa4657bc1fd69ca12d3735f5dae5c4452840980633d314aa69411a3e31a44.jpg', 'http://47.94.86.115:9000/knowledge-base-files/upload-images/hak180产品安全手册/29245869565f74bb1299f92bbf890a1c412ba210bbef115b259b89b501611458.jpg']
+2026-03-19 16:46:41.879 | INFO     | node_answer_output.py:node_answer_output:320  - ---写入MongoDB历史记录---
+2026-03-19 16:46:41.893 | INFO     | node_answer_output.py:node_answer_output:326  - ---发送 final 事件---图片为：['http://47.94.86.115:9000/knowledge-base-files/upload-images/hak180产品安全手册/249fa4657bc1fd69ca12d3735f5dae5c4452840980633d314aa69411a3e31a44.jpg', 'http://47.94.86.115:9000/knowledge-base-files/upload-images/hak180产品安全手册/29245869565f74bb1299f92bbf890a1c412ba210bbef115b259b89b501611458.jpg']
+2026-03-19 16:46:41.897 | INFO     | node_answer_output.py:node_answer_output:338  - ---node_answer_output 节点处理结束---
