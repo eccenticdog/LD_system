@@ -1,0 +1,2 @@
+{"sample_id":"hak180-power-001","query":"HAK 180 的电源线支持什么电压和频率？","item_names":["HAK 180 烫金机"],"reference_context_ids":["replace-with-real-chunk-id-1"],"reference_contexts":["本设备通过 AC 220 V-240 V 50/60 Hz 电源供电。"],"metadata":{"source":"hak180_manual","note":"请替换为真实 chunk_id"}}
+{"sample_id":"hak180-temp-001","query":"HAK 180 使用后，内部高温区域在操作前要注意什么？","item_names":["HAK 180 烫金机"],"reference_context_ids":["replace-with-real-chunk-id-2"],"reference_contexts":["使用本设备之后短时间内，本设备的一些内部零件仍然处于高温状态。先等待设备冷却下来，再触摸设备的内部零件。"],"metadata":{"source":"hak180_manual","note":"请替换为真实 chunk_id"}}
